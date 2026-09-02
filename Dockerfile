@@ -1,10 +1,15 @@
 FROM ruby:3.2.2
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && \
+    apt-get install -y build-essential libpq-dev nodejs yarn
 
-WORKDIR /miniapp
+WORKDIR /rails
 
-COPY Gemfile /miniapp/Gemfile
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-COPY . /miniapp
+COPY . .
+
+EXPOSE 3000
+
+CMD ["bash"]
