@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    command: ["/rails/bin/docker-entrypoint", "/rails/bin/rails", "server", "-b", "0.0.0.0"]
+    command: bash -c "rm -f /rails/tmp/pids/server.pid && /rails/bin/rails server -b 0.0.0.0"
     volumes:
       - .:/rails
     ports:
