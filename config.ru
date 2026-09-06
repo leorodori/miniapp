@@ -4,7 +4,3 @@ require_relative "config/environment"
 
 run Rails.application
 Rails.application.load_server
-
-resources :users, only: [:new, :create]
-
-root "pages#home"
