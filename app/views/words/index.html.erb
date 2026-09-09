@@ -1,0 +1,15 @@
+<h1>あなたの言葉一覧</h1>
+
+<%= link_to "新しい言葉を追加する", new_word_path %>
+
+<ul>
+  <% @words.each do |word| %>
+    <li>
+      <%= word.name %>
+      |
+      <%= link_to "編集", edit_word_path(word) %>
+      |
+      <%= link_to "削除", word_path(word), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+    </li>
+  <% end %>
+</ul>
