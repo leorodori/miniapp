@@ -1,0 +1,18 @@
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+/usr/bin/ruby3.2 -I/usr/lib/ruby/vendor_ruby extconf.rb
+creating Makefile
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa clean
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa
+compiling escape.c
+linking shared-object cgi/escape.so
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260909-32440-1pe6sa/cgi
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa clean
