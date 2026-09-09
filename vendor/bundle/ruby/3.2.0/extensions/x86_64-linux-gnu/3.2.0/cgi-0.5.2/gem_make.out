@@ -3,16 +3,16 @@ current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/g
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-g54beg sitelibdir\=./.gem.20260909-14139-g54beg clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-g54beg sitelibdir\=./.gem.20260909-14139-g54beg
 compiling escape.c
 linking shared-object cgi/escape.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa install
-/usr/bin/install -c -m 0755 escape.so ./.gem.20260909-32440-1pe6sa/cgi
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-g54beg sitelibdir\=./.gem.20260909-14139-g54beg install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260909-14139-g54beg/cgi
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-1pe6sa sitelibdir\=./.gem.20260909-32440-1pe6sa clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-g54beg sitelibdir\=./.gem.20260909-14139-g54beg clean

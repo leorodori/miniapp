@@ -3,17 +3,17 @@ current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/g
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-a0n0jj sitelibdir\=./.gem.20260909-32440-a0n0jj clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-jickvq sitelibdir\=./.gem.20260909-14139-jickvq clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-a0n0jj sitelibdir\=./.gem.20260909-32440-a0n0jj
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-jickvq sitelibdir\=./.gem.20260909-14139-jickvq
 compiling debug.c
 compiling iseq_collector.c
 linking shared-object debug/debug.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-a0n0jj sitelibdir\=./.gem.20260909-32440-a0n0jj install
-/usr/bin/install -c -m 0755 debug.so ./.gem.20260909-32440-a0n0jj/debug
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-jickvq sitelibdir\=./.gem.20260909-14139-jickvq install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20260909-14139-jickvq/debug
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-a0n0jj sitelibdir\=./.gem.20260909-32440-a0n0jj clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-jickvq sitelibdir\=./.gem.20260909-14139-jickvq clean

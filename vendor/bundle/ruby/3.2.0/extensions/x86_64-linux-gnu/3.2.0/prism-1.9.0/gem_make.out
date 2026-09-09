@@ -6,10 +6,10 @@ checking for whether -fvisibility=hidden is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-3xjtbp sitelibdir\=./.gem.20260909-32440-3xjtbp clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-2oxkt1 sitelibdir\=./.gem.20260909-14139-2oxkt1 clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-3xjtbp sitelibdir\=./.gem.20260909-32440-3xjtbp
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-2oxkt1 sitelibdir\=./.gem.20260909-14139-2oxkt1
 compiling api_node.c
 compiling api_pack.c
 compiling ./../../src/diagnostic.c
@@ -37,8 +37,8 @@ compiling ./../../src/token_type.c
 linking shared-object prism/prism.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-3xjtbp sitelibdir\=./.gem.20260909-32440-3xjtbp install
-/usr/bin/install -c -m 0755 prism.so ./.gem.20260909-32440-3xjtbp/prism
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-2oxkt1 sitelibdir\=./.gem.20260909-14139-2oxkt1 install
+/usr/bin/install -c -m 0755 prism.so ./.gem.20260909-14139-2oxkt1/prism
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-3xjtbp sitelibdir\=./.gem.20260909-32440-3xjtbp clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-2oxkt1 sitelibdir\=./.gem.20260909-14139-2oxkt1 clean

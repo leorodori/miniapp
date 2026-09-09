@@ -8,16 +8,16 @@ checking for whether -std=c99 is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-tk9ggb sitelibdir\=./.gem.20260909-32440-tk9ggb clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-q1t61r sitelibdir\=./.gem.20260909-14139-q1t61r clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-tk9ggb sitelibdir\=./.gem.20260909-32440-tk9ggb
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-q1t61r sitelibdir\=./.gem.20260909-14139-q1t61r
 compiling bootsnap.c
 linking shared-object bootsnap/bootsnap.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-tk9ggb sitelibdir\=./.gem.20260909-32440-tk9ggb install
-/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20260909-32440-tk9ggb/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-q1t61r sitelibdir\=./.gem.20260909-14139-q1t61r install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20260909-14139-q1t61r/bootsnap
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-tk9ggb sitelibdir\=./.gem.20260909-32440-tk9ggb clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-q1t61r sitelibdir\=./.gem.20260909-14139-q1t61r clean

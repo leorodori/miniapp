@@ -4,16 +4,16 @@ checking for rb_ext_ractor_safe() in ruby.h... yes
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/erb-6.0.7/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-l8vdrs sitelibdir\=./.gem.20260909-32440-l8vdrs clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-v9spcc sitelibdir\=./.gem.20260909-14139-v9spcc clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/erb-6.0.7/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-l8vdrs sitelibdir\=./.gem.20260909-32440-l8vdrs
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-v9spcc sitelibdir\=./.gem.20260909-14139-v9spcc
 compiling escape.c
 linking shared-object erb/escape.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/erb-6.0.7/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-l8vdrs sitelibdir\=./.gem.20260909-32440-l8vdrs install
-/usr/bin/install -c -m 0755 escape.so ./.gem.20260909-32440-l8vdrs/erb
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-v9spcc sitelibdir\=./.gem.20260909-14139-v9spcc install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260909-14139-v9spcc/erb
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/erb-6.0.7/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-l8vdrs sitelibdir\=./.gem.20260909-32440-l8vdrs clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-v9spcc sitelibdir\=./.gem.20260909-14139-v9spcc clean

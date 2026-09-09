@@ -17,16 +17,16 @@ checking for rb_prepend_module()... yes
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-uussqs sitelibdir\=./.gem.20260909-32440-uussqs clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-gvy45b sitelibdir\=./.gem.20260909-14139-gvy45b clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-uussqs sitelibdir\=./.gem.20260909-32440-uussqs
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-gvy45b sitelibdir\=./.gem.20260909-14139-gvy45b
 compiling console.c
 linking shared-object io/console.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-uussqs sitelibdir\=./.gem.20260909-32440-uussqs install
-/usr/bin/install -c -m 0755 console.so ./.gem.20260909-32440-uussqs/io
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-gvy45b sitelibdir\=./.gem.20260909-14139-gvy45b install
+/usr/bin/install -c -m 0755 console.so ./.gem.20260909-14139-gvy45b/io
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260909-32440-uussqs sitelibdir\=./.gem.20260909-32440-uussqs clean
+make DESTDIR\= sitearchdir\=./.gem.20260909-14139-gvy45b sitelibdir\=./.gem.20260909-14139-gvy45b clean
