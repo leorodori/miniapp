@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Miniapp</title>
+    <title>MiniApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f7f7f7;
+      }
+
+      header {
+        background: #333;
+        color: white;
+        padding: 12px 20px;
+      }
+
+      header a {
+        color: white;
+        margin-right: 15px;
+        text-decoration: none;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+    </style>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <% if logged_in? %>
+        <%= link_to "ホーム", words_path %>
+        <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, method: :delete %>
+      <% else %>
+        <%= link_to "ログイン", login_path %>
+        <%= link_to "新規登録", signup_path %>
+      <% end %>
+    </header>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
