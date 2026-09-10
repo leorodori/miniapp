@@ -3,15 +3,15 @@ class WordsController < ApplicationController
   before_action :set_word, only: [:edit, :update, :destroy]
 
   def index
-    @words = Word.all
+    @words = current_user.words
   end
 
   def new
-    @word = Word.new
+    @word = current_user.words.new
   end
 
   def create
-    @word = Word.new(word_params)
+    @word = current_user.words.new(word_params)
     if @word.save
       redirect_to words_path, notice: "登録しました"
     else
@@ -38,7 +38,7 @@ class WordsController < ApplicationController
   private
 
   def set_word
-    @word = Word.find(params[:id])
+    @word = current_user.words.find(params[:id])
   end
 
   def word_params
