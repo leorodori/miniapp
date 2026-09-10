@@ -7,6 +7,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
     <style>
       body {
         font-family: sans-serif;
@@ -40,13 +42,14 @@
         margin-top: 0;
       }
     </style>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <header>
       <% if logged_in? %>
         <%= link_to "ホーム", words_path %>
-        <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
+        <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, method: :delete %>
       <% else %>
         <%= link_to "ログイン", login_path %>
         <%= link_to "新規登録", signup_path %>

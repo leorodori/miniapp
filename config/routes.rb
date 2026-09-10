@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   # ユーザー登録
+  get "signup", to: "users#new"
   resources :users, only: [:new, :create]
 
   # Words の CRUD
