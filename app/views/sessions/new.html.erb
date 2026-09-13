@@ -1,9 +1,9 @@
 <h1>ログイン</h1>
 
-<%= form_with url: login_path, method: :post, local: true do |f| %>
+<%= form_with url: login_path, method: :post do |f| %>
   <div>
     <%= f.label :email, "メールアドレス" %><br>
-    <%= f.email_field :email %>
+    <%= f.text_field :email %>
   </div>
 
   <div>
@@ -11,7 +11,11 @@
     <%= f.password_field :password %>
   </div>
 
-  <%= f.submit "ログイン" %>
+  <div>
+    <%= f.submit "ログイン" %>
+  </div>
 <% end %>
 
-<%= link_to "新規登録はこちら", new_user_path %>
+<% if flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>

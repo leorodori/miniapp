@@ -1,9 +1,13 @@
 class WordsController < ApplicationController
   before_action :require_login
-  before_action :set_word, only: [:edit, :update, :destroy]
+  before_action :set_word, only: [:show, :edit, :update, :destroy]
+  before_action :require_own_word, only: [:edit, :update, :destroy]
 
   def index
-    @words = current_user.words
+    @words = current_user.words.order(created_at: :desc)
+  end
+
+  def show
   end
 
   def new
@@ -38,16 +42,16 @@ class WordsController < ApplicationController
   private
 
   def set_word
-    @word = current_user.words.find(params[:id])
+    @word = Word.find(params[:id])
+  end
+
+  def require_own_word
+    unless @word.user_id == current_user.id
+      redirect_to words_path, alert: "権限がありません"
+    end
   end
 
   def word_params
-    params.require(:word).permit(:name)
-  end
-
-  def require_login
-    unless session[:user_id]
-      redirect_to login_path, alert: "ログインしてください"
-    end
+    params.require(:word).permit(:content)
   end
 end
