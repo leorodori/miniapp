@@ -42,16 +42,19 @@ class WordsController < ApplicationController
   private
 
   def set_word
-    @word = Word.find(params[:id])
+    @word = current_user.words.find_by(id: params[:id])
+    unless @word
+      redirect_to words_path, alert: "権限がありません"
+    end
   end
 
   def require_own_word
-    unless @word.user_id == current_user.id
+    unless @word.owned_by?(current_user)
       redirect_to words_path, alert: "権限がありません"
     end
   end
 
   def word_params
-    params.require(:word).permit(:content)
+    params.require(:word).permit(:name)
   end
 end
