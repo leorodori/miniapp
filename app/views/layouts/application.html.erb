@@ -1,63 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MiniApp</title>
+    <title>Words</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
-    <style>
-      body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f7f7f7;
-      }
-
-      header {
-        background: #333;
-        color: white;
-        padding: 12px 20px;
-      }
-
-      header a {
-        color: white;
-        margin-right: 15px;
-        text-decoration: none;
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 30px auto;
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      }
-
-      h1 {
-        margin-top: 0;
-      }
-    </style>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <header>
       <% if logged_in? %>
-        <%= link_to "ホーム", words_path %>
-        <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, method: :delete %>
+        <nav>
+          <%= link_to "Words一覧", words_path %> |
+          <%= button_to "ログアウト", logout_path, method: :delete, form: { style: "display:inline" } %>
+        </nav>
       <% else %>
-        <%= link_to "ログイン", login_path %>
-        <%= link_to "新規登録", signup_path %>
+        <nav>
+          <%= link_to "ログイン", login_path %> |
+          <%= link_to "新規登録", new_user_path %>
+        </nav>
       <% end %>
     </header>
 
-    <div class="container">
+    <main>
+      <% if notice %>
+        <p style="color: green;"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p style="color: red;"><%= alert %></p>
+      <% end %>
+
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>
