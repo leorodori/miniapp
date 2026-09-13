@@ -1,12 +1,14 @@
-<h1>新規登録</h1>
+<h1>新しい言葉を登録</h1>
 
-<%= form_with model: @word do |f| %>
-  <div>
-    <%= f.label :name, "内容" %><br>
-    <%= f.text_field :name %>
-  </div>
+<div style="border: 1px solid #ccc; padding: 20px; border-radius: 6px; max-width: 500px;">
+  <%= form_with model: @word do |f| %>
+    <div style="margin-bottom: 16px;">
+      <%= f.label :name, "内容", style: "display: block; margin-bottom: 6px;" %>
+      <%= f.text_field :name, style: "width: 100%; padding: 8px;" %>
+    </div>
 
-  <div>
-    <%= f.submit "登録する" %>
-  </div>
-<% end %>
+    <div>
+      <%= f.submit "登録する", class: "btn", style: "padding: 8px 16px;" %>
+    </div>
+  <% end %>
+</div>

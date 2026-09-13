@@ -1,15 +1,23 @@
 <h1>あなたの言葉一覧</h1>
 
-<%= link_to "新しい言葉を追加する", new_word_path %>
+<div style="margin-bottom: 20px;">
+  <%= link_to "新しい言葉を追加する", new_word_path, class: "btn" %>
+</div>
 
-<ul>
+<div class="words-container">
   <% @words.each do |word| %>
-    <li>
-      <%= word.name %>
-      |
-      <%= link_to "編集", edit_word_path(word) %>
-      |
-      <%= link_to "削除", word_path(word), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
-    </li>
+    <div class="word-item" style="border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; border-radius: 6px;">
+      <div style="font-size: 16px; margin-bottom: 8px;">
+        <%= word.name %>
+      </div>
+
+      <div>
+        <%= link_to "編集", edit_word_path(word), class: "btn" %>
+        <%= link_to "削除", word_path(word),
+              data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+              class: "btn-danger",
+              style: "margin-left: 8px;" %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
