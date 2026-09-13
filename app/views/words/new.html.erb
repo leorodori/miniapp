@@ -1,6 +1,17 @@
 <h1>新しい言葉を登録</h1>
 
 <div style="border: 1px solid #ccc; padding: 20px; border-radius: 6px; max-width: 500px;">
+
+  <% if @word.errors.any? %>
+    <div style="color: red; margin-bottom: 16px;">
+      <ul>
+        <% @word.errors.full_messages_for(:name).each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with model: @word do |f| %>
     <div style="margin-bottom: 16px;">
       <%= f.label :name, "内容", style: "display: block; margin-bottom: 6px;" %>
