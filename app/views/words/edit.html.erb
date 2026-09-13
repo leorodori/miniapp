@@ -1,8 +1,8 @@
-<h1>言葉を編集</h1>
+<h1>編集</h1>
 
-<%= form_with model: @word, local: true do |f| %>
+<%= form_with model: @word do |f| %>
   <div>
-    <%= f.label :name, "言葉" %><br>
+    <%= f.label :name, "内容" %><br>
     <%= f.text_field :name %>
   </div>
 
@@ -10,5 +10,3 @@
     <%= f.submit "更新する" %>
   </div>
 <% end %>
-
-<%= link_to "戻る", words_path %>
