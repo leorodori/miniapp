@@ -1,0 +1,9 @@
+<div class="card">
+  <h2><%= @word.name %></h2>
+
+  <div class="actions">
+    <%= link_to "編集", edit_word_path(@word), class: "btn" %>
+    <%= button_to "削除", word_path(@word), method: :delete, class: "btn-danger" %>
+    <%= link_to "一覧に戻る", words_path, class: "btn-secondary" %>
+  </div>
+</div>
