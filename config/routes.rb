@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   # Words の CRUD
-  resources :words
+  resources :words do
+    resources :notes, only: :create
+  end
 
   # Rails 標準ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check
