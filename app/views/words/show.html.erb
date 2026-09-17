@@ -3,7 +3,40 @@
 
   <div class="actions">
     <%= link_to "編集", edit_word_path(@word), class: "btn" %>
-    <%= button_to "削除", word_path(@word), method: :delete, class: "btn-danger" %>
+
+    <%= link_to "削除", word_path(@word),
+          data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+          class: "btn-danger" %>
+
     <%= link_to "一覧に戻る", words_path, class: "btn-secondary" %>
   </div>
 </div>
+
+<h2>メモ一覧</h2>
+
+<% @word.notes.order(created_at: :desc).each do |note| %>
+  <div class="note-item">
+    <p><%= note.body %></p>
+    <small><%= note.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+
+    <div style="margin-top: 8px;">
+      <%= link_to "メモを編集", edit_word_note_path(@word, note), class: "btn-secondary" %>
+
+      <%= link_to "メモを削除", word_note_path(@word, note),
+            data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+            class: "btn-danger",
+            style: "margin-left: 8px;" %>
+    </div>
+  </div>
+<% end %>
+
+<h3>メモを追加</h3>
+
+<%= form_with model: [@word, Note.new], local: true do |f| %>
+  <div>
+    <%= f.text_area :body, rows: 3 %>
+  </div>
+  <div>
+    <%= f.submit "追加する" %>
+  </div>
+<% end %>
