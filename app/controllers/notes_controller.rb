@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_word
-  before_action :set_note, only: [:edit, :update]
+  before_action :set_note, only: [:edit, :update, :destroy]
 
   def create
     @note = @word.notes.build(note_params)
@@ -21,6 +21,11 @@ class NotesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @note.destroy
+    redirect_to @word, notice: 'メモを削除しました'
   end
 
   private

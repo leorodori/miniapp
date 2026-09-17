@@ -21,6 +21,11 @@
 
     <div style="margin-top: 8px;">
       <%= link_to "メモを編集", edit_word_note_path(@word, note), class: "btn-secondary" %>
+
+      <%= link_to "メモを削除", word_note_path(@word, note),
+            data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+            class: "btn-danger",
+            style: "margin-left: 8px;" %>
     </div>
   </div>
 <% end %>
