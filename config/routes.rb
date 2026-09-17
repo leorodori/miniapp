@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Words の CRUD
   resources :words do
-    resources :notes, only: :create
+    resources :notes, only: [:create, :edit, :update]
   end
 
   # Rails 標準ヘルスチェック

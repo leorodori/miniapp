@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_word
+  before_action :set_note, only: [:edit, :update]
 
   def create
     @note = @word.notes.build(note_params)
@@ -11,10 +12,25 @@ class NotesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @note.update(note_params)
+      redirect_to @word, notice: 'メモを更新しました'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_word
     @word = current_user.words.find(params[:word_id])
+  end
+
+  def set_note
+    @note = @word.notes.find(params[:id])
   end
 
   def note_params
