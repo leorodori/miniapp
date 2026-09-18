@@ -2,6 +2,10 @@ class NotesController < ApplicationController
   before_action :set_word
   before_action :set_note, only: [:edit, :update, :destroy]
 
+  def new
+    @note = @word.notes.build
+  end
+
   def create
     @note = @word.notes.build(note_params)
 
