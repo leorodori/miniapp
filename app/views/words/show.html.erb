@@ -1,42 +1,52 @@
-<div class="card">
-  <h2><%= @word.name %></h2>
+<div style="
+  background: #f5f5dc; /* 掲示板のベージュ */
+  padding: 40px;
+  min-height: 600px;
+  border: 2px solid #d2b48c;
+">
 
-  <div class="actions">
-    <%= link_to "編集", edit_word_path(@word), class: "btn" %>
-
-    <%= link_to "削除", word_path(@word),
-          data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-          class: "btn-danger" %>
-
-    <%= link_to "一覧に戻る", words_path, class: "btn-secondary" %>
+  <!-- Word（タイトル） -->
+  <div style="
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    background: #ffffff;
+    display: inline-block;
+  ">
+    <%= @word.name %>
   </div>
+
+  <!-- メモ一覧（付箋を貼る領域） -->
+  <div style="
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  ">
+    <% @word.notes.each do |note| %>
+      <div style="
+        width: 200px;
+        height: 200px;
+        background: #fff59d;
+        padding: 15px;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      ">
+        <p style="white-space: pre-wrap;"><%= note.body %></p>
+
+        <div style="position: absolute; bottom: 10px; left: 10px;">
+          <%= link_to "編集", edit_word_note_path(@word, note), class: "btn", style: "margin-right: 8px;" %>
+          <%= link_to "削除", word_note_path(@word, note),
+               data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+               class: "btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- メモ追加 -->
+  <div style="margin-top: 30px;">
+    <%= link_to "新しいメモを追加する", new_word_note_path(@word), class: "btn" %>
+  </div>
+
 </div>
-
-<h2>メモ一覧</h2>
-
-<% @word.notes.order(created_at: :desc).each do |note| %>
-  <div class="note-item">
-    <p><%= note.body %></p>
-    <small><%= note.created_at.strftime("%Y-%m-%d %H:%M") %></small>
-
-    <div style="margin-top: 8px;">
-      <%= link_to "メモを編集", edit_word_note_path(@word, note), class: "btn-secondary" %>
-
-      <%= link_to "メモを削除", word_note_path(@word, note),
-            data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-            class: "btn-danger",
-            style: "margin-left: 8px;" %>
-    </div>
-  </div>
-<% end %>
-
-<h3>メモを追加</h3>
-
-<%= form_with model: [@word, Note.new], local: true do |f| %>
-  <div>
-    <%= f.text_area :body, rows: 3 %>
-  </div>
-  <div>
-    <%= f.submit "追加する" %>
-  </div>
-<% end %>
