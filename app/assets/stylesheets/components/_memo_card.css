@@ -1,0 +1,58 @@
+/* 掲示板の背景 */
+.board-container {
+  background: #f5f5f5;
+  padding: 40px;
+  min-height: 600px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Wordタイトル */
+.word-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  background: #ffffff;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+/* メモ一覧の並び */
+.memo-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* メモカード（白黒基調） */
+.memo-card {
+  background: #ffffff;
+  padding: 16px;
+  position: relative;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+
+  /* 自動伸縮のための設定 */
+  min-height: 160px;   /* 最低限の高さだけ確保 */
+  width: 300px;        /* 横幅は固定（世界観の統一） */
+  height: auto;        /* 内容に応じて伸びる */
+}
+
+/* メモ本文 */
+.memo-body {
+  white-space: pre-wrap;
+  margin-bottom: 40px;
+}
+
+/* 編集・削除ボタンの位置 */
+.memo-actions {
+  margin-top: 12px; /* 自然な余白に変更 */
+  position: static; /* absolute を廃止 */
+}
+
+/* メモ追加リンク */
+.memo-add {
+  margin-top: 30px;
+}
