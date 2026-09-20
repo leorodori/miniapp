@@ -12,12 +12,8 @@
  *
  *= require_tree .
  *= require_self
- */
-/*
  *= require_tree ./components
  */
-
-/*  */
 
 body {
   font-family: 'Noto Serif JP', 'Inter', serif;
