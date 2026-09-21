@@ -1,0 +1,52 @@
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 12px;
+  font-family: 'Noto Serif JP', 'Inter', serif;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.memo-textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 12px;
+  font-family: 'Noto Serif JP', 'Inter', serif;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.word-input {
+  width: 100%;
+  padding: 12px;
+  height: 200px; 
+  font-family: 'Noto Serif JP', 'Inter', serif;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.word-textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 12px;
+  font-family: 'Noto Serif JP', 'Inter', serif;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+}

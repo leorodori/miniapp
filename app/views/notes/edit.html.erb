@@ -1,10 +1,10 @@
 <h1>メモを編集</h1>
 
-<div style="border: 1px solid #ccc; padding: 20px; border-radius: 6px; max-width: 500px;">
+<div class="form-container">
   <%= form_with model: [@word, @note], local: true do |f| %>
     <div style="margin-bottom: 16px;">
       <%= f.label :body, "内容", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_area :body, rows: 4, style: "width: 100%; padding: 8px;" %>
+      <%= f.text_area :body, class: "memo-textarea" %>
     </div>
 
     <div>
