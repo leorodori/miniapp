@@ -22,7 +22,6 @@ body {
   background: #fafafa;
 }
 
-/* リンク風の操作ボタン */
 .link-action {
   background: none;
   border: none;
@@ -38,11 +37,22 @@ body {
   color: #000;
 }
 
-/* 削除だけ赤文字 */
 .link-action-danger {
   color: #c0392b;
 }
 
 .link-action-danger:hover {
   color: #e74c3c;
+}
+
+.word-textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 12px;
+  font-family: 'Noto Serif JP', 'Inter', serif;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
 }
