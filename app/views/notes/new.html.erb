@@ -1,0 +1,12 @@
+<h2>新しいメモを追加</h2>
+
+<%= form_with(model: [@word, @note]) do |f| %>
+  <div>
+    <%= f.label :body, "内容" %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  <div style="margin-top: 12px;">
+    <%= f.submit "保存する" %>
+  </div>
+<% end %>

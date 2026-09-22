@@ -19,9 +19,9 @@
         <p class="word-meta">メモ数: <%= word.notes.count %></p>
 
         <div class="word-actions flow">
-          <%= link_to "詳細", word_path(word), class: "btn-secondary" %>
-          <%= link_to "編集", edit_word_path(word), class: "btn", style: "margin-left: 8px;" %>
-          <%= link_to "削除", word_path(word),
+          <%= link_to "メモを見る", word_path(word), class: "btn-secondary" %>
+          <%= link_to "言葉を編集", edit_word_path(word), class: "btn", style: "margin-left: 8px;" %>
+          <%= link_to "言葉を削除", word_path(word),
                data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
                class: "btn-danger",
                style: "margin-left: 8px;" %>
