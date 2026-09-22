@@ -21,3 +21,28 @@ body {
   color: #333;
   background: #fafafa;
 }
+
+/* リンク風の操作ボタン */
+.link-action {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 12px;
+  color: #555;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-action:hover {
+  color: #000;
+}
+
+/* 削除だけ赤文字 */
+.link-action-danger {
+  color: #c0392b;
+}
+
+.link-action-danger:hover {
+  color: #e74c3c;
+}

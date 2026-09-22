@@ -11,20 +11,22 @@
     <% @words.each do |word| %>
       <div class="word-card">
 
+        <!-- Word の名前 -->
         <div class="word-name">
           <%= word.name %>
         </div>
 
+        <!-- メタ情報 -->
         <p class="word-meta">作成日: <%= word.created_at.strftime("%Y-%m-%d") %></p>
         <p class="word-meta">メモ数: <%= word.notes.count %></p>
 
-        <div class="word-actions flow">
-          <%= link_to "メモを見る", word_path(word), class: "btn-secondary" %>
-          <%= link_to "言葉を編集", edit_word_path(word), class: "btn", style: "margin-left: 8px;" %>
-          <%= link_to "言葉を削除", word_path(word),
+        <!-- 操作リンク（リンク風） -->
+        <div class="word-actions flow" style="margin-top: 12px;">
+          <%= link_to "詳細", word_path(word), class: "link-action" %>
+          <%= link_to "編集", edit_word_path(word), class: "link-action" %>
+          <%= link_to "削除", word_path(word),
                data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-               class: "btn-danger",
-               style: "margin-left: 8px;" %>
+               class: "link-action link-action-danger" %>
         </div>
 
       </div>
