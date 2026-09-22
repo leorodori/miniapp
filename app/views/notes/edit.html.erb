@@ -4,7 +4,7 @@
   <%= form_with model: [@word, @note], local: true do |f| %>
     <div style="margin-bottom: 16px;">
       <%= f.label :body, "内容", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_area :body, class: "memo-textarea" %>
+      <%= f.text_area :body, class: "word-textarea" %>
     </div>
 
     <div>

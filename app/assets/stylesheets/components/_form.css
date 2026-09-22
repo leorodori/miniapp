@@ -1,5 +1,5 @@
 .form-container {
-  max-width: 700px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -14,7 +14,7 @@ textarea {
   border-radius: 6px;
   box-sizing: border-box;
   resize: vertical;
-}
+} 
 
 .memo-textarea {
   width: 100%;
@@ -49,4 +49,14 @@ textarea {
   border-radius: 6px;
   box-sizing: border-box;
   resize: vertical;
+}
+
+.new-note-container {
+  max-width: 600px; 
+  margin: 0 auto;
+}
+
+.new-note-actions {
+  max-width: 900px; 
+  margin: 12px auto 0; 
 }

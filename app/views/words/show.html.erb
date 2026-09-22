@@ -7,8 +7,14 @@
 
   <!-- メモ一覧（カード表示） -->
   <div class="memo-list">
-    <% @word.notes.each do |note| %>
+    <% @word.notes.order(created_at: :desc).each do |note| %>
       <div class="memo-card">
+
+        <!-- 日付（右上に小さく） -->
+        <div class="memo-date">
+          <%= note.created_at.strftime("%Y-%m-%d") %>
+        </div>
+
         <p class="memo-body"><%= note.body %></p>
 
         <div class="memo-actions flow">
