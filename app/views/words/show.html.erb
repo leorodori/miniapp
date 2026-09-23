@@ -5,6 +5,16 @@
     <%= @word.name %>
   </div>
 
+  <!-- Word 操作（編集・削除） -->
+  <div class="word-actions" style="margin: 16px 0;">
+    <%= link_to "編集", edit_word_path(@word), class: "btn", style: "margin-right: 8px;" %>
+    <%= link_to "削除", word_path(@word),
+         data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+         class: "btn-danger" %>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
   <!-- メモ一覧（カード表示） -->
   <div class="memo-list">
     <% @word.notes.order(created_at: :desc).each do |note| %>
