@@ -8,6 +8,7 @@ class WordsController < ApplicationController
   end
 
   def show
+    @notes = @word.notes.order(created_at: :desc)
   end
 
   def new
