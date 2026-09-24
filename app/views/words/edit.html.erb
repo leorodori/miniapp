@@ -18,8 +18,9 @@
       <%= f.text_area :name, class: "word-textarea" %>
     </div>
 
-    <div>
+    <div style="display: flex; gap: 12px;">
       <%= f.submit "更新する", class: "btn", style: "padding: 8px 16px;" %>
+      <%= link_to "戻る", word_path(@word), class: "link-action" %>
     </div>
   <% end %>
 </div>
