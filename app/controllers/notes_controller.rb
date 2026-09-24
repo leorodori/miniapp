@@ -12,7 +12,7 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to @word, notice: 'メモを追加しました'
     else
-      redirect_to @word, alert: 'メモを追加できませんでした'
+      render :new, status: :unprocessable_entity
     end
   end
 
