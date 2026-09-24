@@ -19,7 +19,10 @@
     </div>
 
     <div style="display: flex; gap: 12px;">
-      <%= f.submit "更新する", class: "btn", style: "padding: 8px 16px;" %>
+      <%= link_to "更新する", word_path(@word),
+            data: { turbo_method: :patch },
+            class: "link-action" %>
+
       <%= link_to "戻る", word_path(@word), class: "link-action" %>
     </div>
   <% end %>
