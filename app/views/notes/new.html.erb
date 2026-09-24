@@ -1,5 +1,13 @@
 <h2>新しいメモを追加</h2>
 
+<% if @note.errors.any? %>
+  <div class="error-messages">
+    <% @note.errors.full_messages.each do |msg| %>
+      <p class="error"><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+
 <%= form_with(model: [@word, @note]) do |f| %>
   <div class="new-note-container">
     <%= f.label :body, "内容" %><br>

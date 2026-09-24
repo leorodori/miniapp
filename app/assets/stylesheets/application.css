@@ -56,3 +56,13 @@ body {
   box-sizing: border-box;
   resize: vertical;
 }
+
+/* エラーメッセージ（赤字） */
+.error-messages {
+  margin-bottom: 12px;
+}
+
+.error {
+  color: #c0392b; /* 赤色（リンクの危険色と統一） */
+  font-size: 14px;
+  margin: 4px 0;
