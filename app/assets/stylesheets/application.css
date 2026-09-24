@@ -63,6 +63,7 @@ body {
 }
 
 .error {
-  color: #c0392b; /* 赤色（リンクの危険色と統一） */
+  color: #c0392b;
   font-size: 14px;
   margin: 4px 0;
+}
