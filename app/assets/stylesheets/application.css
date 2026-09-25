@@ -68,7 +68,6 @@ body {
   margin: 4px 0;
 }
 
-/* ログイン画面の中央寄せ */
 .login-container {
   display: flex;
   flex-direction: column;
@@ -78,6 +77,13 @@ body {
 
 .login-container form {
   width: 300px;
+}
+
+.login-input {
+  height: 30px; 
+  padding: 12px; 
+  font-size: 14px; 
+  box-sizing: border-box;
 }
 
 .login-error {
