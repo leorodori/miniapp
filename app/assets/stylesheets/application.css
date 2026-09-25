@@ -67,3 +67,20 @@ body {
   font-size: 14px;
   margin: 4px 0;
 }
+
+/* ログイン画面の中央寄せ */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.login-container form {
+  width: 300px;
+}
+
+.login-error {
+  color: red;
+  margin-top: 10px;
+}
