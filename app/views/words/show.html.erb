@@ -1,11 +1,14 @@
 <div class="board-container">
 
-  <!-- Word（タイトル） -->
   <div class="word-title">
     <%= @word.name %>
   </div>
 
-  <!-- Word 操作（編集・削除） -->
+  <div style="margin: 16px 0;">
+    <strong>どんな言葉？</strong>
+    <p><%= @word.description %></p>
+  </div>
+
   <div class="word-actions" style="margin: 16px 0;">
     <%= link_to "編集", edit_word_path(@word), class: "btn", style: "margin-right: 8px;" %>
     <%= link_to "削除", word_path(@word),
@@ -15,12 +18,10 @@
 
   <hr style="margin: 20px 0;">
 
-  <!-- メモ一覧（カード表示） -->
   <div class="memo-list">
     <% @word.notes.order(created_at: :desc).each do |note| %>
       <div class="memo-card">
 
-        <!-- 日付（右上に小さく） -->
         <div class="memo-date">
           <%= note.created_at.strftime("%Y-%m-%d") %>
         </div>
@@ -37,7 +38,6 @@
     <% end %>
   </div>
 
-  <!-- メモ追加 -->
   <div class="memo-add">
     <%= link_to "新しいメモを追加する", new_word_note_path(@word), class: "btn" %>
   </div>

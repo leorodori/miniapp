@@ -1,0 +1,19 @@
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
+/home/toyoo/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv clean
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20260929-44138-azyqvv/debug
+
+current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv clean

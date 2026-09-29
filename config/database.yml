@@ -1,8 +1,3 @@
-# PostgreSQL. Versions 9.3 and up are supported.
-#
-# Install the pg driver:
-#   gem install pg
-#
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -13,7 +8,7 @@ development:
   database: miniapp_development
   username: postgres
   password: password
-  host: db
+  host: <%= ENV.fetch("DATABASE_HOST") { "db" } %>
   port: 5432
 
 test:
@@ -21,7 +16,7 @@ test:
   database: miniapp_test
   username: postgres
   password: password
-  host: db
+  host: <%= ENV.fetch("DATABASE_HOST") { "db" } %>
   port: 5432
 
 production:
@@ -29,5 +24,5 @@ production:
   database: miniapp_production
   username: postgres
   password: password
-  host: db
+  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
   port: 5432
