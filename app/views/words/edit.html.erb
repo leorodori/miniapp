@@ -27,8 +27,20 @@
     </div>
 
     <div style="display: flex; gap: 12px;">
-      <%= f.submit "更新する", class: "btn", style: "padding: 8px 16px;" %>
-      <%= link_to "戻る", word_path(@word), class: "link-action" %>
+
+      <!-- 更新する（テキストリンク化） -->
+      <%= link_to "更新する",
+          word_path(@word),
+          data: { turbo_method: :patch },
+          class: "link-action" %>
+
+      <!-- 戻る（index/showで分岐） -->
+      <% if params[:from] == "index" %>
+        <%= link_to "言葉一覧に戻る", words_path, class: "link-action" %>
+      <% else %>
+        <%= link_to "戻る", word_path(@word), class: "link-action" %>
+      <% end %>
+
     </div>
 
   <% end %>
