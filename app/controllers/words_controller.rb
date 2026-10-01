@@ -4,8 +4,16 @@ class WordsController < ApplicationController
   before_action :require_own_word, only: [:edit, :update, :destroy]
 
   def index
-    @words = current_user.words.order(created_at: :desc)
+    if params[:q].present?
+      query = "%#{params[:q]}%"
+      @words = current_user.words
+                           .where("name LIKE ? OR description LIKE ?", query, query)
+                           .order(created_at: :desc)
+    else
+      @words = current_user.words.order(created_at: :desc)
+    end
   end
+
 
   def show
     @notes = @word.notes.order(created_at: :desc)
