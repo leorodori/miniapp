@@ -2,6 +2,21 @@
 
 <div class="board-container">
 
+  <!-- 🔍 検索フォーム追加 -->
+  <div style="margin-bottom: 20px;">
+    <%= form_with url: words_path, method: :get, local: true do |f| %>
+      <div style="display: flex; gap: 8px;">
+        <%= f.text_field :q,
+              value: params[:q],
+              placeholder: "検索ワードを入力",
+              class: "word-search-input",
+              style: "flex: 1; padding: 6px;" %>
+
+        <%= f.submit "検索", class: "link-action", style: "padding: 6px 12px;" %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="word-add">
     <%= link_to "新しい言葉を追加する", new_word_path, class: "btn" %>
   </div>
