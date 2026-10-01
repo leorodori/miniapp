@@ -13,24 +13,25 @@
   <% end %>
 
   <%= form_with model: @word do |f| %>
-    
+
+    <!-- 言葉（name） -->
     <div style="margin-bottom: 16px;">
-      <%= f.label :title, "タイトル", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_field :title, style: "width: 100%; padding: 8px;" %>
+      <%= f.label :name, "言葉", style: "display: block; margin-bottom: 6px;" %>
+      <%= f.text_field :name, style: "width: 100%; padding: 8px;" %>
     </div>
 
+    <!-- どんな言葉？（description） -->
     <div style="margin-bottom: 16px;">
-      <%= f.label :content, "内容", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_area :content, class: "word-textarea" %>
-    </div>
-
-    <div style="margin-bottom: 16px;">
-      <%= f.label :description, "説明", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_area :description, class: "word-textarea" %>
+      <%= f.label :description, "どんな言葉？", style: "display: block; margin-bottom: 6px;" %>
+      <%= f.text_area :description, class: "word-textarea", style: "width: 100%; padding: 8px;" %>
     </div>
 
     <div style="display: flex; gap: 12px;">
-      <%= f.submit "登録する", class: "btn", style: "padding: 8px 16px;" %>
+      <%= link_to "登録する",
+            words_path,
+            data: { turbo_method: :post },
+            class: "link-action" %>
+
       <%= link_to "戻る", words_path, class: "link-action" %>
     </div>
 

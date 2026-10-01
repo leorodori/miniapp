@@ -14,7 +14,6 @@ class WordsController < ApplicationController
     end
   end
 
-
   def show
     @notes = @word.notes.order(created_at: :desc)
   end
@@ -64,6 +63,6 @@ class WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:title, :content, :description)
+    params.require(:word).permit(:name, :description)
   end
 end
