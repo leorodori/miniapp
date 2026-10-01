@@ -13,13 +13,11 @@
     <%= f.label :body, "内容" %><br>
     <%= f.text_area :body, class: "word-textarea" %>
 
-    <div style="margin-top: 12px; display: flex; gap: 12px;">
-      <%= link_to "保存する",
-            word_notes_path(@word),
-            data: { turbo_method: :post },
-            class: "link-action" %>
+    <!-- ★ submit をリンク風にする（最重要） -->
+    <%= f.submit "保存する",
+          class: "link-action",
+          style: "background: none; border: none; padding: 0; cursor: pointer;" %>
 
-      <%= link_to "戻る", word_path(@word), class: "link-action" %>
-    </div>
+    <%= link_to "戻る", word_path(@word), class: "link-action" %>
   </div>
 <% end %>
