@@ -1,15 +1,18 @@
 <h1>メモを編集</h1>
 
 <div class="form-container">
-  <%= form_with model: [@word, @note], local: true do |f| %>
+  <%= form_with(model: [@word, @note]) do |f| %>
     <div style="margin-bottom: 16px;">
       <%= f.label :body, "内容", style: "display: block; margin-bottom: 6px;" %>
       <%= f.text_area :body, class: "word-textarea" %>
     </div>
 
     <div>
-      <%= f.submit "更新する", class: "btn" %>
-      <%= link_to "戻る", word_path(@word), class: "btn-secondary", style: "margin-left: 8px;" %>
+      <%= f.submit "更新する",
+            class: "link-action",
+            style: "background: none; border: none; padding: 0; cursor: pointer;" %>
+
+      <%= link_to "戻る", word_path(@word), class: "link-action", style: "margin-left: 8px;" %>
     </div>
   <% end %>
 </div>

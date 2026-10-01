@@ -12,15 +12,13 @@
     </div>
   <% end %>
 
-  <%= form_with model: @word do |f| %>
+  <%= form_with model: @word, local: true do |f| %>
 
-    <!-- 言葉（name） -->
     <div style="margin-bottom: 16px;">
       <%= f.label :name, "言葉", style: "display: block; margin-bottom: 6px;" %>
       <%= f.text_area :name, class: "word-textarea", style: "min-height: 120px;" %>
     </div>
 
-    <!-- どういう言葉？（description） -->
     <div style="margin-bottom: 16px;">
       <%= f.label :description, "どういう言葉？", style: "display: block; margin-bottom: 6px;" %>
       <%= f.text_area :description, class: "word-textarea", style: "min-height: 160px;" %>
@@ -28,13 +26,10 @@
 
     <div style="display: flex; gap: 12px;">
 
-      <!-- 更新する（テキストリンク化） -->
-      <%= link_to "更新する",
-          word_path(@word),
-          data: { turbo_method: :patch },
-          class: "link-action" %>
+      <%= f.submit "更新する",
+            class: "link-action",
+            style: "background: none; border: none; padding: 0; cursor: pointer;" %>
 
-      <!-- 戻る（index/showで分岐） -->
       <% if params[:from] == "index" %>
         <%= link_to "言葉一覧に戻る", words_path, class: "link-action" %>
       <% else %>
