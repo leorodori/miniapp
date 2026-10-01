@@ -27,7 +27,11 @@
     </div>
 
     <div style="display: flex; gap: 12px;">
-      <%= f.submit "登録する", class: "btn", style: "padding: 8px 16px;" %>
+      <%= link_to "登録する",
+            words_path,
+            data: { turbo_method: :post },
+            class: "link-action" %>
+
       <%= link_to "戻る", words_path, class: "link-action" %>
     </div>
 
