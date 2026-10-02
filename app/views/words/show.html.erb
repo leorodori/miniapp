@@ -1,12 +1,12 @@
 <div class="board-container">
 
   <div class="word-title">
-    <%= @word.name %>
+    <%= simple_format(@word.name) %>
   </div>
 
   <div style="margin: 16px 0;">
     <strong>どんな言葉？</strong>
-    <p><%= @word.description %></p>
+    <p><%= simple_format(@word.description) %></p>
   </div>
 
   <div class="word-actions" style="margin: 16px 0;">
@@ -26,7 +26,7 @@
           <%= note.created_at.strftime("%Y-%m-%d") %>
         </div>
 
-        <p class="memo-body"><%= note.body %></p>
+        <p class="memo-body"><%= simple_format(note.body) %></p>
 
         <div class="memo-actions flow">
           <%= link_to "編集", edit_word_note_path(@word, note), class: "btn" %>
