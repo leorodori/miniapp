@@ -30,11 +30,8 @@
             class: "link-action",
             style: "background: none; border: none; padding: 0; cursor: pointer;" %>
 
-      <% if params[:from] == "index" %>
-        <%= link_to "言葉一覧に戻る", words_path, class: "link-action" %>
-      <% else %>
-        <%= link_to "戻る", word_path(@word), class: "link-action" %>
-      <% end %>
+      <!-- 分岐削除：常に show に戻る -->
+      <%= link_to "戻る", word_path(@word), class: "link-action" %>
 
     </div>
 
