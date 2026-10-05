@@ -8,7 +8,7 @@ development:
   database: miniapp_development
   username: postgres
   password: password
-  host: <%= ENV.fetch("DATABASE_HOST") { "db" } %>
+  host: localhost
   port: 5432
 
 test:
@@ -16,7 +16,7 @@ test:
   database: miniapp_test
   username: postgres
   password: password
-  host: <%= ENV.fetch("DATABASE_HOST") { "db" } %>
+  host: localhost
   port: 5432
 
 production:
