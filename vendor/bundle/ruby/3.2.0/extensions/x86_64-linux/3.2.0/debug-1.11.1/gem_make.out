@@ -3,17 +3,17 @@ current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/g
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-5ws6ni sitelibdir\=./.gem.20261005-15706-5ws6ni clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-5ws6ni sitelibdir\=./.gem.20261005-15706-5ws6ni
 compiling debug.c
 compiling iseq_collector.c
 linking shared-object debug/debug.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv install
-/usr/bin/install -c -m 0755 debug.so ./.gem.20260929-44138-azyqvv/debug
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-5ws6ni sitelibdir\=./.gem.20261005-15706-5ws6ni install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20261005-15706-5ws6ni/debug
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-azyqvv sitelibdir\=./.gem.20260929-44138-azyqvv clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-5ws6ni sitelibdir\=./.gem.20261005-15706-5ws6ni clean

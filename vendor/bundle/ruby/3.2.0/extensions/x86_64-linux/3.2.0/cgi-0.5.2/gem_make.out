@@ -3,16 +3,16 @@ current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/g
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-j7nw96 sitelibdir\=./.gem.20260929-44138-j7nw96 clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-wealru sitelibdir\=./.gem.20261005-15706-wealru clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-j7nw96 sitelibdir\=./.gem.20260929-44138-j7nw96
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-wealru sitelibdir\=./.gem.20261005-15706-wealru
 compiling escape.c
 linking shared-object cgi/escape.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-j7nw96 sitelibdir\=./.gem.20260929-44138-j7nw96 install
-/usr/bin/install -c -m 0755 escape.so ./.gem.20260929-44138-j7nw96/cgi
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-wealru sitelibdir\=./.gem.20261005-15706-wealru install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20261005-15706-wealru/cgi
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-j7nw96 sitelibdir\=./.gem.20260929-44138-j7nw96 clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-wealru sitelibdir\=./.gem.20261005-15706-wealru clean
