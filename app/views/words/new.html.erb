@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <%= form_with model: @word do |f| %>
+  <%= form_with model: @word, local: true do |f| %>
 
     <!-- 言葉（name） -->
     <div style="margin-bottom: 16px;">
@@ -27,11 +27,7 @@
     </div>
 
     <div style="display: flex; gap: 12px;">
-      <%= link_to "登録する",
-            words_path,
-            data: { turbo_method: :post },
-            class: "link-action" %>
-
+      <%= f.submit "登録する", class: "link-action" %>
       <%= link_to "戻る", words_path, class: "link-action" %>
     </div>
 
