@@ -28,6 +28,9 @@
 
         <!-- Word の名前 -->
         <div class="word-name">
+          <% if word.pinned? %>
+            📌
+          <% end %>
           <%= word.name %>
         </div>
 
@@ -39,10 +42,21 @@
         <div class="word-actions flow" style="margin-top: 12px;">
           <%= link_to "詳細", word_path(word), class: "link-action" %>
 
+          <!-- ピン止め / ピン解除（Turbo が PATCH を確実に送る書き方） -->
+          <% if word.pinned? %>
+            <%= link_to "ピン解除", unpin_word_path(word),
+                  data: { turbo_method: "patch" },
+                  class: "link-action" %>
+          <% else %>
+            <%= link_to "ピン止め", pin_word_path(word),
+                  data: { turbo_method: "patch" },
+                  class: "link-action" %>
+          <% end %>
+
           <!-- 編集リンク削除済み -->
 
           <%= link_to "削除", word_path(word),
-               data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+               data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" },
                class: "link-action link-action-danger" %>
         </div>
 

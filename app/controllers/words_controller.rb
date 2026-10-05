@@ -1,16 +1,16 @@
 class WordsController < ApplicationController
   before_action :require_login
-  before_action :set_word, only: [:show, :edit, :update, :destroy]
-  before_action :require_own_word, only: [:edit, :update, :destroy]
+  before_action :set_word, only: [:show, :edit, :update, :destroy, :pin, :unpin]
+  before_action :require_own_word, only: [:edit, :update, :destroy, :pin, :unpin]
 
   def index
     if params[:q].present?
       query = "%#{params[:q]}%"
       @words = current_user.words
                            .where("name LIKE ? OR description LIKE ?", query, query)
-                           .order(created_at: :desc)
+                           .order(pinned: :desc, created_at: :desc)
     else
-      @words = current_user.words.order(created_at: :desc)
+      @words = current_user.words.order(pinned: :desc, created_at: :desc)
     end
   end
 
@@ -46,6 +46,18 @@ class WordsController < ApplicationController
     @word.destroy
     redirect_to words_path, notice: "削除しました"
   end
+
+  # --- ピン止め機能 ---
+  def pin
+    @word.update(pinned: true)
+    redirect_to words_path
+  end
+
+  def unpin
+    @word.update(pinned: false)
+    redirect_to words_path
+  end
+  # ---------------------
 
   private
 

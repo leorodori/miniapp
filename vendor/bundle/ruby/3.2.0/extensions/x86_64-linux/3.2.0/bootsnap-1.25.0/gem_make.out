@@ -8,16 +8,16 @@ checking for whether -std=c99 is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-4z3k2i sitelibdir\=./.gem.20260929-44138-4z3k2i clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-vebvp4 sitelibdir\=./.gem.20261005-15706-vebvp4 clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-4z3k2i sitelibdir\=./.gem.20260929-44138-4z3k2i
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-vebvp4 sitelibdir\=./.gem.20261005-15706-vebvp4
 compiling bootsnap.c
 linking shared-object bootsnap/bootsnap.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-4z3k2i sitelibdir\=./.gem.20260929-44138-4z3k2i install
-/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20260929-44138-4z3k2i/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-vebvp4 sitelibdir\=./.gem.20261005-15706-vebvp4 install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20261005-15706-vebvp4/bootsnap
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.25.0/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-4z3k2i sitelibdir\=./.gem.20260929-44138-4z3k2i clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-vebvp4 sitelibdir\=./.gem.20261005-15706-vebvp4 clean

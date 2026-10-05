@@ -17,16 +17,16 @@ checking for rb_prepend_module()... yes
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-r94cd3 sitelibdir\=./.gem.20260929-44138-r94cd3 clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4xjhb0 sitelibdir\=./.gem.20261005-15706-4xjhb0 clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-r94cd3 sitelibdir\=./.gem.20260929-44138-r94cd3
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4xjhb0 sitelibdir\=./.gem.20261005-15706-4xjhb0
 compiling console.c
 linking shared-object io/console.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-r94cd3 sitelibdir\=./.gem.20260929-44138-r94cd3 install
-/usr/bin/install -c -m 0755 console.so ./.gem.20260929-44138-r94cd3/io
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4xjhb0 sitelibdir\=./.gem.20261005-15706-4xjhb0 install
+/usr/bin/install -c -m 0755 console.so ./.gem.20261005-15706-4xjhb0/io
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-r94cd3 sitelibdir\=./.gem.20260929-44138-r94cd3 clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4xjhb0 sitelibdir\=./.gem.20261005-15706-4xjhb0 clean

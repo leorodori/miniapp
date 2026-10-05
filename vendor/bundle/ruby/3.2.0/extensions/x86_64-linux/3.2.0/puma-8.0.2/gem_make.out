@@ -25,18 +25,18 @@ checking for SSL_get1_peer_certificate() in openssl/ssl.h... yes
 creating Makefile
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/puma-8.0.2/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-fyb13l sitelibdir\=./.gem.20260929-44138-fyb13l clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4c3tw7 sitelibdir\=./.gem.20261005-15706-4c3tw7 clean
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/puma-8.0.2/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-fyb13l sitelibdir\=./.gem.20260929-44138-fyb13l
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4c3tw7 sitelibdir\=./.gem.20261005-15706-4c3tw7
 compiling http11_parser.c
 compiling mini_ssl.c
 compiling puma_http11.c
 linking shared-object puma/puma_http11.so
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/puma-8.0.2/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-fyb13l sitelibdir\=./.gem.20260929-44138-fyb13l install
-/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20260929-44138-fyb13l/puma
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4c3tw7 sitelibdir\=./.gem.20261005-15706-4c3tw7 install
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20261005-15706-4c3tw7/puma
 
 current directory: /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/puma-8.0.2/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20260929-44138-fyb13l sitelibdir\=./.gem.20260929-44138-fyb13l clean
+make DESTDIR\= sitearchdir\=./.gem.20261005-15706-4c3tw7 sitelibdir\=./.gem.20261005-15706-4c3tw7 clean

@@ -12,6 +12,11 @@ Rails.application.routes.draw do
 
   # Words の CRUD
   resources :words do
+    member do
+      patch :pin
+      patch :unpin
+    end
+
     resources :notes, only: [:new, :create, :edit, :update, :destroy]
   end
 

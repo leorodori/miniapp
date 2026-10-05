@@ -143,7 +143,7 @@ checked program was:
 /* end */
 
 LD_LIBRARY_PATH=.:/home/toyoo/.rbenv/versions/3.2.3/lib "gcc -o conftest -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0/x86_64-linux -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0/ruby/backward -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0 -I.    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdiv-by-zero -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wold-style-definition -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wundef  -fPIC conftest.c  -L. -L/home/toyoo/.rbenv/versions/3.2.3/lib -Wl,-rpath,/home/toyoo/.rbenv/versions/3.2.3/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/home/toyoo/.rbenv/versions/3.2.3/lib -L/home/toyoo/.rbenv/versions/3.2.3/lib -lruby  -lm -lpthread  -lc"
-/usr/bin/ld: /tmp/ccTzl1Mx.o: in function `t':
+/usr/bin/ld: /tmp/cc27jpLr.o: in function `t':
 /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console/conftest.c:17:(.text+0xb): undefined reference to `rb_io_path'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -203,7 +203,7 @@ checked program was:
 /* end */
 
 LD_LIBRARY_PATH=.:/home/toyoo/.rbenv/versions/3.2.3/lib "gcc -o conftest -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0/x86_64-linux -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0/ruby/backward -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0 -I.    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdiv-by-zero -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wold-style-definition -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wundef  -fPIC conftest.c  -L. -L/home/toyoo/.rbenv/versions/3.2.3/lib -Wl,-rpath,/home/toyoo/.rbenv/versions/3.2.3/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/home/toyoo/.rbenv/versions/3.2.3/lib -L/home/toyoo/.rbenv/versions/3.2.3/lib -lruby  -lm -lpthread  -lc"
-/usr/bin/ld: /tmp/ccFOyq4P.o: in function `t':
+/usr/bin/ld: /tmp/ccWdpEW6.o: in function `t':
 /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console/conftest.c:17:(.text+0xb): undefined reference to `rb_io_closed_p'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -263,7 +263,7 @@ checked program was:
 /* end */
 
 LD_LIBRARY_PATH=.:/home/toyoo/.rbenv/versions/3.2.3/lib "gcc -o conftest -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0/x86_64-linux -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0/ruby/backward -I/home/toyoo/.rbenv/versions/3.2.3/include/ruby-3.2.0 -I.    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdiv-by-zero -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wold-style-definition -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wundef  -fPIC conftest.c  -L. -L/home/toyoo/.rbenv/versions/3.2.3/lib -Wl,-rpath,/home/toyoo/.rbenv/versions/3.2.3/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/home/toyoo/.rbenv/versions/3.2.3/lib -L/home/toyoo/.rbenv/versions/3.2.3/lib -lruby  -lm -lpthread  -lc"
-/usr/bin/ld: /tmp/ccME8hvn.o: in function `t':
+/usr/bin/ld: /tmp/ccMcK5Pa.o: in function `t':
 /home/toyoo/ruby_workspace/miniapp/vendor/bundle/ruby/3.2.0/gems/io-console-0.9.2/ext/io/console/conftest.c:17:(.text+0xb): undefined reference to `rb_io_open_descriptor'
 collect2: error: ld returned 1 exit status
 checked program was:
