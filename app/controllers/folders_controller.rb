@@ -13,7 +13,6 @@ class FoldersController < ApplicationController
       redirect_back fallback_location: words_path, notice: "フォルダを作成しました"
     else
       @folders = current_user.folders.order(created_at: :desc)
-      flash.now[:alert] = @folder.errors.full_messages.join(" / ")
       render :index, status: :unprocessable_entity
     end
   end
