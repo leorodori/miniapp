@@ -1,66 +1,64 @@
 <h1>フォルダ管理</h1>
 
-<div style="display: flex; gap: 32px; align-items: flex-start;">
+<div class="folder-layout">
 
   <!-- 1. 新規フォルダ作成フォーム -->
-  <div style="border: 1px solid #ccc; padding: 20px; border-radius: 6px; width: 300px;">
-    <h2 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 16px;">新しいフォルダを作成</h2>
+  <div class="folder-form-card">
+    <h2 class="folder-section-title">新しいフォルダを作成</h2>
 
     <% if @folder.errors.any? %>
-      <div style="color: red; margin-bottom: 12px; font-size: 0.9rem;">
-        <ul>
-          <% @folder.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
+      <div class="error-messages">
+        <% @folder.errors.full_messages.each do |msg| %>
+          <p class="error"><%= msg %></p>
+        <% end %>
       </div>
     <% end %>
 
     <%= form_with model: @folder, local: true do |f| %>
-      <div style="margin-bottom: 16px;">
-        <%= f.label :name, "フォルダ名", style: "display: block; margin-bottom: 6px;" %>
-        <%= f.text_field :name, placeholder: "例: 歌詞, 映画 ", style: "width: 100%; padding: 6px; box-sizing: border-box;" %>
+      <div class="form-group">
+        <%= f.label :name, "フォルダ名", class: "form-label" %>
+        <%= f.text_field :name, placeholder: "例: 歌詞, 映画", class: "folder-input" %>
       </div>
 
-      <%= f.submit "作成する", class: "btn", style: "width: 100%;" %>
+      <%= f.submit "作成する", class: "btn folder-submit-btn" %>
     <% end %>
   </div>
 
   <!-- 2. 既存フォルダ一覧 & 操作（編集・削除） -->
-  <div style="flex-grow: 1;">
-    <h2 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 16px;">登録済みフォルダ一覧</h2>
+  <div class="folder-list-container">
+    <h2 class="folder-section-title">登録済みフォルダ一覧</h2>
 
     <% if @folders.any? %>
-      <table style="width: 100%; border-collapse: collapse;">
+      <table class="folder-table">
         <thead>
-          <tr style="border-bottom: 2px solid #ccc; text-align: left;">
-            <th style="padding: 8px;">フォルダ名</th>
-            <th style="padding: 8px;">言葉の数</th>
-            <th style="padding: 8px;">操作</th>
+          <tr>
+            <th>フォルダ名</th>
+            <th>言葉の数</th>
+            <th>操作</th>
           </tr>
         </thead>
         <tbody>
           <% @folders.each do |folder| %>
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 8px; font-weight: bold;">
-                <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id), style: "text-decoration: none; color: #333;" %>
+            <tr>
+              <td class="folder-name-cell">
+                <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id), class: "folder-link" %>
               </td>
-              <td style="padding: 8px;"><%= folder.words.count %> 件</td>
-              <td style="padding: 8px;">
+              <td><%= folder.words.count %> 件</td>
+              <td>
                 <%= link_to "編集", edit_folder_path(folder), class: "link-action" %>
                 <%= link_to "削除", folder_path(folder),
                       data: { turbo_method: "delete", turbo_confirm: "フォルダ「#{folder.name}」を削除しますか？\n\n※中の単語は削除されず『未分類』に移動します。" },
-                      class: "link-action link-action-danger", style: "margin-left: 8px;" %>
+                      class: "link-action link-action-danger" %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     <% else %>
-      <p style="color: #6c757d;">まだフォルダはありません。</p>
+      <p class="empty-message">まだフォルダはありません。</p>
     <% end %>
 
-    <div style="margin-top: 24px;">
+    <div class="folder-back-link">
       <%= link_to "← 言葉一覧に戻る", words_path, class: "link-action" %>
     </div>
   </div>
