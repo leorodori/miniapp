@@ -1,10 +1,16 @@
 ja:
   activerecord:
+    models:
+      folder: "フォルダ"
+      word: "言葉"
+      note: "メモ"
     attributes:
       word:
         name: ""
       note:
         body: ""
+      folder:
+        name: ""
     errors:
       models:
         word:
@@ -17,3 +23,8 @@ ja:
             body:
               blank: "文字を入力してください"
               too_long: "300文字以内で入力してください"
+        folder:
+          attributes:
+            name:
+              blank: "フォルダ名を入力してください"
+              taken: "フォルダ名はすでに存在します"
