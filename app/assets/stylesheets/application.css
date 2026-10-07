@@ -57,29 +57,37 @@ body {
   resize: vertical;
 }
 
-/* エラーメッセージ（赤字） */
+/* --------------------------------------------------
+ * エラーメッセージ共通スタイル（アプリ全体で統一）
+ * -------------------------------------------------- */
 .error-messages {
   margin-bottom: 12px;
 }
 
 .error {
-  color: #c0392b;
+  color: red;
   font-size: 14px;
   margin: 4px 0;
 }
 
-.login-container {
+/* --------------------------------------------------
+ * ログイン・新規登録画面
+ * -------------------------------------------------- */
+.login-container,
+.signup-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
 }
 
-.login-container form {
+.login-container form,
+.signup-container form {
   width: 300px;
 }
 
-.login-input {
+.login-input,
+.signup-input {
   height: 30px; 
   padding: 12px; 
   font-size: 14px; 
@@ -88,25 +96,8 @@ body {
 
 .login-error {
   color: red;
-  margin-top: 10px;
-}
-
-.signup-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.signup-container form {
-  width: 300px;
-}
-
-.signup-input {
-  height: 30px;
-  padding: 12px;
   font-size: 14px;
-  box-sizing: border-box;
+  margin-top: 10px;
 }
 
 .signup-title {

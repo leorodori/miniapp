@@ -13,6 +13,10 @@
   <% end %>
 
   <%= form_with model: @word, local: true do |f| %>
+    <div style="margin-bottom: 16px;">
+      <%= f.label :folder_id, "フォルダ", style: "display: block; margin-bottom: 6px;" %>
+      <%= f.collection_select :folder_id, @folders, :id, :name, { include_blank: "指定なし（未分類）" }, { style: "width: 100%; padding: 8px;" } %>
+    </div>
 
     <div style="margin-bottom: 16px;">
       <%= f.label :name, "言葉", style: "display: block; margin-bottom: 6px;" %>
@@ -30,7 +34,6 @@
             class: "link-action",
             style: "background: none; border: none; padding: 0; cursor: pointer;" %>
 
-      <!-- 分岐削除：常に show に戻る -->
       <%= link_to "戻る", word_path(@word), class: "link-action" %>
 
     </div>

@@ -60,3 +60,87 @@ textarea {
   max-width: 900px; 
   margin: 12px auto 0; 
 }
+
+.folder-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.folder-form-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 6px;
+  width: 300px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.folder-section-title {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.folder-input {
+  width: 100%;
+  padding: 6px 12px;
+  font-family: 'Noto Serif JP', 'Inter', serif;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.folder-submit-btn {
+  width: 100%;
+}
+
+.folder-list-container {
+  flex-grow: 1;
+}
+
+.folder-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.folder-table th {
+  padding: 8px;
+  border-bottom: 2px solid #ccc;
+  text-align: left;
+}
+
+.folder-table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.folder-name-cell {
+  font-weight: bold;
+}
+
+.folder-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.folder-link:hover {
+  text-decoration: underline;
+}
+
+.empty-message {
+  color: #6c757d;
+}
+
+.folder-back-link {
+  margin-top: 24px;
+}

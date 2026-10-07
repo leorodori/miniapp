@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :words
+
+  has_many :words, dependent: :destroy
+  
+  has_many :folders, dependent: :destroy
 
   validates :email, presence: true
 

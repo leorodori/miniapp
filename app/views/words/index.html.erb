@@ -1,67 +1,130 @@
 <h1>あなたの言葉一覧</h1>
 
-<div class="board-container">
+<!-- サイドバー＋メインコンテンツを並べるレイアウト -->
+<div style="display: flex; gap: 24px; align-items: flex-start;">
 
-  <!-- 🔍 検索フォーム -->
-  <div style="margin-bottom: 20px;">
-    <%= form_with url: words_path, method: :get, local: true do |f| %>
-      <div style="display: flex; gap: 8px; align-items: center;">
-        <%= f.text_field :q,
-              value: params[:q],
-              placeholder: "検索ワードを入力",
-              class: "word-search-input",
-              style: "width: 300px; padding: 6px;" %>
+  <!-- 1. フォルダナビゲーション（サイドバー） -->
+  <aside style="width: 220px; flex-shrink: 0; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 16px;">
+    <h3 style="font-size: 1rem; margin-top: 0; margin-bottom: 12px; border-bottom: 1px solid #dee2e6; padding-bottom: 6px;">フォルダ</h3>
+    
+    <!-- フォルダ一覧 -->
+    <ul style="list-style: none; padding: 0; margin: 0 0 16px 0;">
+      <!-- すべての言葉 -->
+      <li style="margin-bottom: 8px;">
+        <%= link_to "📁 すべて", words_path(q: params[:q]), 
+              style: "text-decoration: none; font-weight: #{params[:folder_id].blank? ? 'bold' : 'normal'}; color: #{params[:folder_id].blank? ? '#0d6efd' : '#333'};" %>
+      </li>
 
-        <%= f.submit "検索", class: "link-action", style: "padding: 6px 12px;" %>
-      </div>
-    <% end %>
-  </div>
+      <!-- 各フォルダ -->
+      <% @folders.each do |folder| %>
+        <li style="margin-bottom: 8px;">
+          <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id, q: params[:q]), 
+                style: "text-decoration: none; font-weight: #{params[:folder_id] == folder.id.to_s ? 'bold' : 'normal'}; color: #{params[:folder_id] == folder.id.to_s ? '#0d6efd' : '#333'};" %>
+        </li>
+      <% end %>
 
-  <div class="word-add">
-    <%= link_to "新しい言葉を追加する", new_word_path, class: "btn" %>
-  </div>
+      <!-- 未分類 -->
+      <li style="margin-top: 12px; border-top: 1px dashed #dee2e6; padding-top: 8px;">
+        <%= link_to "📄 未分類", words_path(folder_id: "none", q: params[:q]), 
+              style: "text-decoration: none; font-weight: #{params[:folder_id] == 'none' ? 'bold' : 'normal'}; color: #{params[:folder_id] == 'none' ? '#0d6efd' : '#6c757d'};" %>
+      </li>
+    </ul>
 
-  <!-- カード一覧 -->
-  <div class="word-list">
-    <% @words.each do |word| %>
-      <div class="word-card">
-
-        <!-- Word の名前 -->
-        <div class="word-name">
-          <% if word.pinned? %>
-            📌
-          <% end %>
-          <%= word.name %>
+    <!-- 追加機能：サイドバー内からの新規フォルダ作成フォーム -->
+    <div style="border-top: 1px solid #dee2e6; padding-top: 12px; margin-bottom: 12px;">
+      <p style="font-size: 0.85rem; font-weight: bold; margin: 0 0 6px 0; color: #495057;">＋ フォルダを追加</p>
+      <%= form_with model: Folder.new, url: folders_path, local: true do |f| %>
+        <div style="display: flex; gap: 4px;">
+          <%= f.text_field :name, placeholder: "フォルダ名", 
+                style: "width: 100%; padding: 4px 6px; font-size: 0.85rem; border: 1px solid #ced4da; border-radius: 4px;" %>
+          <%= f.submit "追加", class: "link-action", 
+                style: "padding: 4px 8px; font-size: 0.8rem; cursor: pointer; white-space: nowrap;" %>
         </div>
+      <% end %>
+    </div>
 
-        <!-- メタ情報 -->
-        <p class="word-meta">作成日: <%= word.created_at.strftime("%Y-%m-%d") %></p>
-        <p class="word-meta">メモ数: <%= word.notes.count %></p>
+    <!-- フォルダ詳細管理画面へのリンク -->
+    <div style="border-top: 1px solid #dee2e6; padding-top: 8px;">
+      <%= link_to "⚙️ 編集・削除はこちら", folders_path, class: "link-action", style: "font-size: 0.8rem;" %>
+    </div>
+  </aside>
 
-        <!-- 操作リンク（リンク風） -->
-        <div class="word-actions flow" style="margin-top: 12px;">
-          <%= link_to "詳細", word_path(word), class: "link-action" %>
+  <!-- 2. メインコンテンツ領域（既存のコンテンツ） -->
+  <div class="board-container" style="flex-grow: 1;">
 
-          <!-- ピン止め / ピン解除（Turbo が PATCH を確実に送る書き方） -->
-          <% if word.pinned? %>
-            <%= link_to "ピン解除", unpin_word_path(word),
-                  data: { turbo_method: "patch" },
-                  class: "link-action" %>
-          <% else %>
-            <%= link_to "ピン止め", pin_word_path(word),
-                  data: { turbo_method: "patch" },
-                  class: "link-action" %>
-          <% end %>
+    <!-- 検索フォーム -->
+    <div style="margin-bottom: 20px;">
+      <%= form_with url: words_path, method: :get, local: true do |f| %>
+        <% if params[:folder_id].present? %>
+          <%= f.hidden_field :folder_id, value: params[:folder_id] %>
+        <% end %>
 
-          <!-- 編集リンク削除済み -->
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <%= f.text_field :q,
+                value: params[:q],
+                placeholder: "検索ワードを入力",
+                class: "word-search-input",
+                style: "width: 300px; padding: 6px;" %>
 
-          <%= link_to "削除", word_path(word),
-               data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" },
-               class: "link-action link-action-danger" %>
+          <%= f.submit "検索", class: "link-action", style: "padding: 6px 12px;" %>
         </div>
+      <% end %>
+    </div>
 
-      </div>
-    <% end %>
+    <div class="word-add">
+      <%= link_to "新しい言葉を追加する", new_word_path(folder_id: params[:folder_id]), class: "btn" %>
+    </div>
+
+    <!-- カード一覧 -->
+    <div class="word-list">
+      <% @words.each do |word| %>
+        <div class="word-card">
+
+          <!-- Word の名前 -->
+          <div class="word-name">
+            <% if word.pinned? %>
+              📌
+            <% end %>
+            <%= word.name %>
+          </div>
+
+          <!-- メタ情報 -->
+          <p class="word-meta">作成日: <%= word.created_at.strftime("%Y-%m-%d") %></p>
+          <p class="word-meta">メモ数: <%= word.notes.count %></p>
+          
+          <!-- 所属フォルダ名バッジ -->
+          <p class="word-meta">
+            フォルダ: 
+            <% if word.folder %>
+              <span style="background: #e9ecef; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem;"><%= word.folder.name %></span>
+            <% else %>
+              <span style="color: #6c757d; font-size: 0.85rem;">未分類</span>
+            <% end %>
+          </p>
+
+          <!-- 操作リンク -->
+          <div class="word-actions flow" style="margin-top: 12px;">
+            <%= link_to "詳細", word_path(word), class: "link-action" %>
+
+            <% if word.pinned? %>
+              <%= link_to "ピン解除", unpin_word_path(word),
+                    data: { turbo_method: "patch" },
+                    class: "link-action" %>
+            <% else %>
+              <%= link_to "ピン止め", pin_word_path(word),
+                    data: { turbo_method: "patch" },
+                    class: "link-action" %>
+            <% end %>
+
+            <%= link_to "削除", word_path(word),
+                 data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" },
+                 class: "link-action link-action-danger" %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
   </div>
 
 </div>

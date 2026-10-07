@@ -1,0 +1,66 @@
+<h1>フォルダ管理</h1>
+
+<div class="folder-layout">
+
+  <!-- 1. 新規フォルダ作成フォーム -->
+  <div class="folder-form-card">
+    <h2 class="folder-section-title">新しいフォルダを作成</h2>
+
+    <% if @folder.errors.any? %>
+      <div class="error-messages">
+        <% @folder.errors.full_messages.each do |msg| %>
+          <p class="error"><%= msg %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= form_with model: @folder, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "フォルダ名", class: "form-label" %>
+        <%= f.text_field :name, placeholder: "例: 歌詞, 映画", class: "folder-input" %>
+      </div>
+
+      <%= f.submit "作成する", class: "btn folder-submit-btn" %>
+    <% end %>
+  </div>
+
+  <!-- 2. 既存フォルダ一覧 & 操作（編集・削除） -->
+  <div class="folder-list-container">
+    <h2 class="folder-section-title">登録済みフォルダ一覧</h2>
+
+    <% if @folders.any? %>
+      <table class="folder-table">
+        <thead>
+          <tr>
+            <th>フォルダ名</th>
+            <th>言葉の数</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @folders.each do |folder| %>
+            <tr>
+              <td class="folder-name-cell">
+                <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id), class: "folder-link" %>
+              </td>
+              <td><%= folder.words.count %> 件</td>
+              <td>
+                <%= link_to "編集", edit_folder_path(folder), class: "link-action" %>
+                <%= link_to "削除", folder_path(folder),
+                      data: { turbo_method: "delete", turbo_confirm: "フォルダ「#{folder.name}」を削除しますか？\n\n※中の単語は削除されず『未分類』に移動します。" },
+                      class: "link-action link-action-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="empty-message">まだフォルダはありません。</p>
+    <% end %>
+
+    <div class="folder-back-link">
+      <%= link_to "← 言葉一覧に戻る", words_path, class: "link-action" %>
+    </div>
+  </div>
+
+</div>
