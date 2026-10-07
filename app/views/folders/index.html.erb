@@ -1,0 +1,68 @@
+<h1>フォルダ管理</h1>
+
+<div style="display: flex; gap: 32px; align-items: flex-start;">
+
+  <!-- 1. 新規フォルダ作成フォーム -->
+  <div style="border: 1px solid #ccc; padding: 20px; border-radius: 6px; width: 300px;">
+    <h2 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 16px;">新しいフォルダを作成</h2>
+
+    <% if @folder.errors.any? %>
+      <div style="color: red; margin-bottom: 12px; font-size: 0.9rem;">
+        <ul>
+          <% @folder.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with model: @folder, local: true do |f| %>
+      <div style="margin-bottom: 16px;">
+        <%= f.label :name, "フォルダ名", style: "display: block; margin-bottom: 6px;" %>
+        <%= f.text_field :name, placeholder: "例: プログラミング, 英語", style: "width: 100%; padding: 6px; box-sizing: border-box;" %>
+      </div>
+
+      <%= f.submit "作成する", class: "btn", style: "width: 100%;" %>
+    <% end %>
+  </div>
+
+  <!-- 2. 既存フォルダ一覧 & 操作（編集・削除） -->
+  <div style="flex-grow: 1;">
+    <h2 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 16px;">登録済みフォルダ一覧</h2>
+
+    <% if @folders.any? %>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid #ccc; text-align: left;">
+            <th style="padding: 8px;">フォルダ名</th>
+            <th style="padding: 8px;">所属単語数</th>
+            <th style="padding: 8px;">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @folders.each do |folder| %>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 8px; font-weight: bold;">
+                <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id), style: "text-decoration: none; color: #333;" %>
+              </td>
+              <td style="padding: 8px;"><%= folder.words.count %> 件</td>
+              <td style="padding: 8px;">
+                <%= link_to "編集", edit_folder_path(folder), class: "link-action" %>
+                <%= link_to "削除", folder_path(folder),
+                      data: { turbo_method: "delete", turbo_confirm: "フォルダ「#{folder.name}」を削除しますか？\n\n※中の単語は削除されず『未分類』に移動します。" },
+                      class: "link-action link-action-danger", style: "margin-left: 8px;" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p style="color: #6c757d;">まだフォルダはありません。</p>
+    <% end %>
+
+    <div style="margin-top: 24px;">
+      <%= link_to "← 言葉一覧に戻る", words_path, class: "link-action" %>
+    </div>
+  </div>
+
+</div>
