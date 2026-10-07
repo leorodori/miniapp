@@ -14,6 +14,12 @@
 
   <%= form_with model: @word, local: true do |f| %>
 
+    <!-- フォルダ選択（folder_id） -->
+    <div style="margin-bottom: 16px;">
+      <%= f.label :folder_id, "フォルダ", style: "display: block; margin-bottom: 6px;" %>
+      <%= f.collection_select :folder_id, @folders, :id, :name, { include_blank: "指定なし（未分類）" }, { style: "width: 100%; padding: 8px;" } %>
+    </div>
+
     <!-- 言葉（name） -->
     <div style="margin-bottom: 16px;">
       <%= f.label :name, "言葉", style: "display: block; margin-bottom: 6px;" %>

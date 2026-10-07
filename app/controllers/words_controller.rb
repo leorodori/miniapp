@@ -4,14 +4,23 @@ class WordsController < ApplicationController
   before_action :require_own_word, only: [:edit, :update, :destroy, :pin, :unpin]
 
   def index
+    @words = current_user.words
+
+    if params[:folder_id].present?
+      if params[:folder_id] == "none"
+        @words = @words.where(folder_id: nil)
+      else
+        @words = @words.where(folder_id: params[:folder_id])
+      end
+    end
+
     if params[:q].present?
       query = "%#{params[:q]}%"
-      @words = current_user.words
-                           .where("name LIKE ? OR description LIKE ?", query, query)
-                           .order(pinned: :desc, created_at: :desc)
-    else
-      @words = current_user.words.order(pinned: :desc, created_at: :desc)
+      @words = @words.where("name LIKE ? OR description LIKE ?", query, query)
     end
+
+    @words = @words.order(pinned: :desc, created_at: :desc)
+    @folders = current_user.folders.order(created_at: :desc)
   end
 
   def show
@@ -20,6 +29,8 @@ class WordsController < ApplicationController
 
   def new
     @word = current_user.words.new
+    @word.folder_id = params[:folder_id] if params[:folder_id].present?
+    @folders = current_user.folders.order(name: :asc)
   end
 
   def create
@@ -27,17 +38,20 @@ class WordsController < ApplicationController
     if @word.save
       redirect_to words_path, notice: "登録しました"
     else
+      @folders = current_user.folders.order(name: :asc)
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    @folders = current_user.folders.order(name: :asc)
   end
 
   def update
     if @word.update(word_params)
       redirect_to @word, notice: "更新しました"
     else
+      @folders = current_user.folders.order(name: :asc)
       render :edit, status: :unprocessable_entity
     end
   end
@@ -47,7 +61,6 @@ class WordsController < ApplicationController
     redirect_to words_path, notice: "削除しました"
   end
 
-  # --- ピン止め機能 ---
   def pin
     @word.update(pinned: true)
     redirect_to words_path
@@ -57,7 +70,6 @@ class WordsController < ApplicationController
     @word.update(pinned: false)
     redirect_to words_path
   end
-  # ---------------------
 
   private
 
@@ -75,6 +87,6 @@ class WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:name, :description)
+    params.require(:word).permit(:name, :description, :folder_id)
   end
 end
