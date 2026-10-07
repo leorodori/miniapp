@@ -19,7 +19,7 @@
     <%= form_with model: @folder, local: true do |f| %>
       <div style="margin-bottom: 16px;">
         <%= f.label :name, "フォルダ名", style: "display: block; margin-bottom: 6px;" %>
-        <%= f.text_field :name, placeholder: "例: プログラミング, 英語", style: "width: 100%; padding: 6px; box-sizing: border-box;" %>
+        <%= f.text_field :name, placeholder: "例: 歌詞, 映画 ", style: "width: 100%; padding: 6px; box-sizing: border-box;" %>
       </div>
 
       <%= f.submit "作成する", class: "btn", style: "width: 100%;" %>
