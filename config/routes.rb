@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "signup", to: "users#new"
   resources :users, only: [:new, :create]
 
+  # フォルダの CRUD（一覧、作成、編集、更新、削除）
+  resources :folders, only: [:index, :create, :edit, :update, :destroy]
+
   # Words の CRUD
   resources :words do
     member do
