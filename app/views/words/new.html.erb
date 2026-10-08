@@ -3,12 +3,10 @@
 <div style="border: 1px solid #ccc; padding: 20px; border-radius: 6px; max-width: 500px;">
 
   <% if @word.errors.any? %>
-    <div style="color: red; margin-bottom: 16px;">
-      <ul>
-        <% @word.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+    <div class="error-messages">
+      <% @word.errors.full_messages.each do |msg| %>
+        <p class="error"><%= msg %></p>
+      <% end %>
     </div>
   <% end %>
 
