@@ -75,55 +75,72 @@
       <%= link_to "新しい言葉を追加する", new_word_path(folder_id: params[:folder_id]), class: "btn" %>
     </div>
 
-    <!-- カード一覧 -->
-    <div class="word-list">
-      <% @words.each do |word| %>
-        <div class="word-card">
+    <% if @words.present? %>
+      <!-- カード一覧（データが存在する場合） -->
+      <div class="word-list">
+        <% @words.each do |word| %>
+          <div class="word-card">
 
-          <!-- Word の名前 -->
-          <div class="word-name">
-            <% if word.pinned? %>
-              📌
-            <% end %>
-            <%= word.name %>
+            <!-- Word の名前 -->
+            <div class="word-name">
+              <% if word.pinned? %>
+                📌
+              <% end %>
+              <%= word.name %>
+            </div>
+
+            <!-- メタ情報 -->
+            <p class="word-meta">作成日: <%= word.created_at.strftime("%Y-%m-%d") %></p>
+            <p class="word-meta">メモ数: <%= word.notes.size %></p>
+            
+            <!-- 所属フォルダ名バッジ -->
+            <p class="word-meta">
+              フォルダ: 
+              <% if word.folder %>
+                <span style="background: #e9ecef; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem;"><%= word.folder.name %></span>
+              <% else %>
+                <span style="color: #6c757d; font-size: 0.85rem;">未分類</span>
+              <% end %>
+            </p>
+
+            <!-- 操作リンク -->
+            <div class="word-actions flow" style="margin-top: 12px;">
+              <%= link_to "詳細", word_path(word), class: "link-action" %>
+
+              <% if word.pinned? %>
+                <%= link_to "ピン解除", unpin_word_path(word),
+                      data: { turbo_method: "patch" },
+                      class: "link-action" %>
+              <% else %>
+                <%= link_to "ピン止め", pin_word_path(word),
+                      data: { turbo_method: "patch" },
+                      class: "link-action" %>
+              <% end %>
+
+              <%= link_to "削除", word_path(word),
+                   data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" },
+                   class: "link-action link-action-danger" %>
+            </div>
+
           </div>
-
-          <!-- メタ情報 -->
-          <p class="word-meta">作成日: <%= word.created_at.strftime("%Y-%m-%d") %></p>
-          <p class="word-meta">メモ数: <%= word.notes.count %></p>
-          
-          <!-- 所属フォルダ名バッジ -->
-          <p class="word-meta">
-            フォルダ: 
-            <% if word.folder %>
-              <span style="background: #e9ecef; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem;"><%= word.folder.name %></span>
-            <% else %>
-              <span style="color: #6c757d; font-size: 0.85rem;">未分類</span>
-            <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <!-- Empty State（データが0件の場合） -->
+      <div style="margin-top: 24px; padding: 32px; text-align: center; background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px;">
+        <% if params[:q].present? %>
+          <p style="margin-bottom: 12px; color: #555; font-size: 0.95rem;">
+            「<strong><%= params[:q] %></strong>」に一致する言葉は見つかりませんでした。
           </p>
-
-          <!-- 操作リンク -->
-          <div class="word-actions flow" style="margin-top: 12px;">
-            <%= link_to "詳細", word_path(word), class: "link-action" %>
-
-            <% if word.pinned? %>
-              <%= link_to "ピン解除", unpin_word_path(word),
-                    data: { turbo_method: "patch" },
-                    class: "link-action" %>
-            <% else %>
-              <%= link_to "ピン止め", pin_word_path(word),
-                    data: { turbo_method: "patch" },
-                    class: "link-action" %>
-            <% end %>
-
-            <%= link_to "削除", word_path(word),
-                 data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" },
-                 class: "link-action link-action-danger" %>
-          </div>
-
-        </div>
-      <% end %>
-    </div>
+          <%= link_to "すべての言葉を表示", words_path(folder_id: params[:folder_id]), class: "link-action" %>
+        <% else %>
+          <p style="margin-bottom: 12px; color: #555; font-size: 0.95rem;">
+            言葉がまだ登録されていません。
+          </p>
+          <%= link_to "新しい言葉を追加する", new_word_path(folder_id: params[:folder_id]), class: "link-action" %>
+        <% end %>
+      </div>
+    <% end %>
 
   </div>
 
