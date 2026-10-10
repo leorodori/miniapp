@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Words</title>
+    <title>言葉一覧</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,7 +17,7 @@
     <header>
       <% if logged_in? %>
         <nav>
-          <%= link_to "Words一覧", words_path %> |
+          <%= link_to "言葉一覧へ", words_path %> |
           <%= button_to "ログアウト", logout_path, method: :delete, form: { style: "display:inline" } %>
         </nav>
       <% else %>
