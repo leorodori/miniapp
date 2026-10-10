@@ -1,48 +1,71 @@
 <div class="board-container">
 
-  <div class="word-title">
-    <%= simple_format(@word.name) %>
-  </div>
+  <!-- ==================================================
+       ブロック1：言葉（主役セクション）
+       ================================================== -->
+  <section class="section-primary" style="margin-bottom: 40px;">
+    <h1 style="font-size: 1.8rem; font-weight: 700; line-height: 1.4; margin: 0; color: #111;">
+      <%= @word.name %>
+    </h1>
+  </section>
 
-  <div style="margin: 16px 0;">
-    <strong>どんな言葉？</strong>
-    <p><%= simple_format(@word.description) %></p>
-  </div>
 
-  <div class="word-actions" style="margin: 16px 0;">
-    <%= link_to "編集", edit_word_path(@word), class: "btn", style: "margin-right: 8px;" %>
-    <%= link_to "削除", word_path(@word),
-         data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-         class: "btn-danger" %>
-  </div>
-
-  <hr style="margin: 20px 0;">
-
-  <div style="margin-bottom: 16px;">
-    <h3 style="margin: 0 0 12px 0; font-size: 1.1rem; color: #333;">
-      メモ（<%= @word.notes.size %>件）
-    </h3>
-    <%= link_to "＋ 新しいメモを追加する", new_word_note_path(@word), class: "btn" %>
-  </div>
-
-  <div class="memo-list">
-    <% @word.notes.order(created_at: :desc).each do |note| %>
-      <div class="memo-card">
-
-        <div class="memo-date">
-          <%= note.created_at.strftime("%Y-%m-%d") %>
-        </div>
-
-        <p class="memo-body"><%= simple_format(note.body) %></p>
-
-        <div class="memo-actions flow">
-          <%= link_to "編集", edit_word_note_path(@word, note), class: "btn" %>
-          <%= link_to "削除", word_note_path(@word, note),
-               data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-               class: "btn-danger" %>
-        </div>
+  <!-- ==================================================
+       ブロック2：どんな言葉？（詳細・説明セクション）
+       ================================================== -->
+  <section class="section-description" style="margin-bottom: 40px;">
+    <!-- 左バーでブロックの開始を明示（レフトバーパターン） -->
+    <div style="padding-left: 16px; border-left: 3px solid #333;">
+      <h2 style="font-size: 0.875rem; font-weight: 600; color: #666; margin: 0 0 8px 0; letter-spacing: 0.04em;">
+        どんな言葉？
+      </h2>
+      <div style="color: #333; font-size: 1rem; line-height: 1.6;">
+        <%= simple_format(@word.description) %>
       </div>
-    <% end %>
-  </div>
+    </div>
+
+    <!-- アクションボタン -->
+    <div class="word-actions" style="margin-top: 16px; padding-left: 19px;">
+      <%= link_to "編集", edit_word_path(@word), class: "btn", style: "margin-right: 8px;" %>
+      <%= link_to "削除", word_path(@word),
+           data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+           class: "btn-danger" %>
+    </div>
+  </section>
+
+  <!-- フェーズの境界線（セクション間の区切り） -->
+  <hr style="margin: 0 0 40px 0; border: none; border-top: 1px solid #e5e5e5;">
+
+
+  <!-- ==================================================
+       ブロック3：メモ（関連ノート一覧セクション）
+       ================================================== -->
+  <section class="section-notes">
+    <div style="margin-bottom: 16px;">
+      <h2 style="font-size: 1rem; font-weight: 600; color: #222; margin: 0 0 12px 0;">
+        メモ（<%= @word.notes.size %>件）
+      </h2>
+      <%= link_to "新しいメモを追加する", new_word_note_path(@word), class: "btn" %>
+    </div>
+
+    <div class="memo-list">
+      <% @word.notes.order(created_at: :desc).each do |note| %>
+        <div class="memo-card">
+          <div class="memo-date">
+            <%= note.created_at.strftime("%Y-%m-%d") %>
+          </div>
+
+          <p class="memo-body"><%= simple_format(note.body) %></p>
+
+          <div class="memo-actions flow">
+            <%= link_to "編集", edit_word_note_path(@word, note), class: "btn" %>
+            <%= link_to "削除", word_note_path(@word, note),
+                 data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                 class: "btn-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
 
 </div>
