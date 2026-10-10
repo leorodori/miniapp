@@ -15,19 +15,19 @@
     <!-- フォルダ選択（folder_id） -->
     <div style="margin-bottom: 16px;">
       <%= f.label :folder_id, "フォルダ", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.collection_select :folder_id, @folders, :id, :name, { include_blank: "指定なし（未分類）" }, { style: "width: 100%; padding: 8px;" } %>
+      <%= f.collection_select :folder_id, @folders, :id, :name, { include_blank: "指定なし（未分類）" }, { style: "width: 100%; padding: 8px; box-sizing: border-box;" } %>
     </div>
 
     <!-- 言葉（name） -->
     <div style="margin-bottom: 16px;">
       <%= f.label :name, "言葉", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_field :name, style: "width: 100%; padding: 8px;" %>
+      <%= f.text_field :name, style: "width: 100%; padding: 8px; box-sizing: border-box;" %>
     </div>
 
     <!-- どんな言葉？（description） -->
     <div style="margin-bottom: 16px;">
       <%= f.label :description, "どんな言葉？", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_area :description, class: "word-textarea", style: "width: 100%; padding: 8px;" %>
+      <%= f.text_area :description, class: "word-textarea", style: "width: 100%; padding: 8px; box-sizing: border-box; height: 120px;" %>
     </div>
 
     <div style="display: flex; gap: 12px;">
