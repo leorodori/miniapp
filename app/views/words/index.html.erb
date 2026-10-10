@@ -12,21 +12,21 @@
       <!-- すべての言葉 -->
       <li style="margin-bottom: 8px;">
         <%= link_to "📁 すべて", words_path(q: params[:q]), 
-              style: "text-decoration: none; font-weight: #{params[:folder_id].blank? ? 'bold' : 'normal'}; color: #{params[:folder_id].blank? ? '#0d6efd' : '#333'};" %>
+            style: "text-decoration: none; font-weight: #{params[:folder_id].blank? ? 'bold' : 'normal'}; color: #{params[:folder_id].blank? ? '#0d6efd' : '#333'};" %>
       </li>
 
       <!-- 各フォルダ -->
       <% @folders.each do |folder| %>
         <li style="margin-bottom: 8px;">
           <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id, q: params[:q]), 
-                style: "text-decoration: none; font-weight: #{params[:folder_id] == folder.id.to_s ? 'bold' : 'normal'}; color: #{params[:folder_id] == folder.id.to_s ? '#0d6efd' : '#333'};" %>
+              style: "text-decoration: none; font-weight: #{params[:folder_id] == folder.id.to_s ? 'bold' : 'normal'}; color: #{params[:folder_id] == folder.id.to_s ? '#0d6efd' : '#333'};" %>
         </li>
       <% end %>
 
       <!-- 未分類 -->
       <li style="margin-top: 12px; border-top: 1px dashed #dee2e6; padding-top: 8px;">
         <%= link_to "📄 未分類", words_path(folder_id: "none", q: params[:q]), 
-              style: "text-decoration: none; font-weight: #{params[:folder_id] == 'none' ? 'bold' : 'normal'}; color: #{params[:folder_id] == 'none' ? '#0d6efd' : '#6c757d'};" %>
+            style: "text-decoration: none; font-weight: #{params[:folder_id] == 'none' ? 'bold' : 'normal'}; color: #{params[:folder_id] == 'none' ? '#0d6efd' : '#6c757d'};" %>
       </li>
     </ul>
 
@@ -36,9 +36,9 @@
       <%= form_with model: Folder.new, url: folders_path, local: true do |f| %>
         <div style="display: flex; gap: 4px;">
           <%= f.text_field :name, placeholder: "フォルダ名", 
-                style: "width: 100%; padding: 4px 6px; font-size: 0.85rem; border: 1px solid #ced4da; border-radius: 4px;" %>
+              style: "width: 100%; padding: 4px 6px; font-size: 0.85rem; border: 1px solid #ced4da; border-radius: 4px;" %>
           <%= f.submit "追加", class: "link-action", 
-                style: "padding: 4px 8px; font-size: 0.8rem; cursor: pointer; white-space: nowrap;" %>
+              style: "padding: 4px 8px; font-size: 0.8rem; cursor: pointer; white-space: nowrap;" %>
         </div>
       <% end %>
     </div>
@@ -61,10 +61,10 @@
 
         <div style="display: flex; gap: 8px; align-items: center;">
           <%= f.text_field :q,
-                value: params[:q],
-                placeholder: "検索ワードを入力",
-                class: "word-search-input",
-                style: "width: 300px; padding: 6px;" %>
+              value: params[:q],
+              placeholder: "検索ワードを入力",
+              class: "word-search-input",
+              style: "width: 300px; padding: 6px;" %>
 
           <%= f.submit "検索", class: "link-action", style: "padding: 6px 12px;" %>
         </div>
@@ -109,12 +109,12 @@
 
               <% if word.pinned? %>
                 <%= link_to "ピン解除", unpin_word_path(word),
-                      data: { turbo_method: "patch" },
-                      class: "link-action" %>
+                    data: { turbo_method: "patch" },
+                    class: "link-action" %>
               <% else %>
                 <%= link_to "ピン止め", pin_word_path(word),
-                      data: { turbo_method: "patch" },
-                      class: "link-action" %>
+                    data: { turbo_method: "patch" },
+                    class: "link-action" %>
               <% end %>
 
               <%= link_to "削除", word_path(word),
@@ -134,10 +134,9 @@
           </p>
           <%= link_to "すべての言葉を表示", words_path(folder_id: params[:folder_id]), class: "link-action" %>
         <% else %>
-          <p style="margin-bottom: 12px; color: #555; font-size: 0.95rem;">
+          <p style="margin-bottom: 0; color: #555; font-size: 0.95rem;">
             言葉がまだ登録されていません。
           </p>
-          <%= link_to "新しい言葉を追加する", new_word_path(folder_id: params[:folder_id]), class: "link-action" %>
         <% end %>
       </div>
     <% end %>
