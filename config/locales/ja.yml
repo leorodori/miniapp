@@ -3,7 +3,7 @@ ja:
     models:
       folder: "フォルダ"
       word: "言葉"
-      note: "メモ"
+      note: "ノート"
     attributes:
       word:
         name: ""

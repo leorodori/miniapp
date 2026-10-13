@@ -10,7 +10,7 @@ class NotesController < ApplicationController
     @note = @word.notes.build(note_params)
 
     if @note.save
-      redirect_to @word, notice: 'メモを追加しました'
+      redirect_to @word, notice: 'ノートを追加しました'
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,7 +21,7 @@ class NotesController < ApplicationController
 
   def update
     if @note.update(note_params)
-      redirect_to @word, notice: 'メモを更新しました'
+      redirect_to @word, notice: 'ノートを更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    redirect_to @word, notice: 'メモを削除しました'
+    redirect_to @word, notice: 'ノートを削除しました'
   end
 
   private
