@@ -45,7 +45,7 @@
               </td>
               <td><%= folder.words.count %> 件</td>
               <td>
-                <%= link_to "編集", edit_folder_path(folder), class: "link-action" %>
+                <%= link_to "フォルダ名を変更", edit_folder_path(folder), class: "link-action" %>
                 <%= link_to "削除", folder_path(folder),
                       data: { turbo_method: "delete", turbo_confirm: "フォルダ「#{folder.name}」を削除しますか？\n\n※中の単語は削除されず『未分類』に移動します。" },
                       class: "link-action link-action-danger" %>
