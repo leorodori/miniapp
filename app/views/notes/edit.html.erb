@@ -4,7 +4,8 @@
   <%= form_with(model: [@word, @note]) do |f| %>
     <div style="margin-bottom: 16px;">
       <%= f.label :body, "内容", style: "display: block; margin-bottom: 6px;" %>
-      <%= f.text_area :body, class: "word-textarea" %>
+      <%= f.text_area :body, class: "word-textarea", placeholder: "この言葉に助けられたエピソードや、得られた気づき、感想などを自由に残してください。" %>
+      
     </div>
 
     <div>

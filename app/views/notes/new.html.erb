@@ -11,7 +11,7 @@
 <%= form_with(model: [@word, @note]) do |f| %>
   <div class="new-note-container">
     <%= f.label :body, "内容" %><br>
-    <%= f.text_area :body, class: "word-textarea" %>
+    <%= f.text_area :body, class: "word-textarea", placeholder: "この言葉に助けられたエピソードや、得られた気づき、感想などを自由に残してください。" %>
 
     <%= f.submit "保存する",
           class: "link-action",
