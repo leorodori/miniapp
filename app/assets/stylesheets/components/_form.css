@@ -16,7 +16,7 @@ textarea {
   resize: vertical;
 } 
 
-.memo-textarea {
+.note-textarea {
   width: 100%;
   min-height: 240px;
   padding: 12px;
