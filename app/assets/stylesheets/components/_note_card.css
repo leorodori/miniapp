@@ -18,15 +18,15 @@
   border-radius: 4px;
 }
 
-/* メモ一覧の並び */
-.memo-list {
+/* ノート一覧の並び */
+.note-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-/* メモカード（白黒基調） */
-.memo-card {
+/* ノートカード（白黒基調） */
+.note-card {
   background: #ffffff;
   padding: 16px;
   position: relative;
@@ -40,19 +40,19 @@
   height: auto;        /* 内容に応じて伸びる */
 }
 
-/* メモ本文 */
-.memo-body {
+/* ノート本文 */
+.note-body {
   white-space: pre-wrap;
   margin-bottom: 16px;
 }
 
 /* 編集・削除ボタンの位置 */
-.memo-actions {
+.note-actions {
   margin-top: 12px; /* 自然な余白に変更 */
   position: static; /* absolute を廃止 */
 }
 
-/* メモ追加リンク */
-.memo-add {
+/* ノート追加リンク */
+.note-add {
   margin-top: 30px;
 }

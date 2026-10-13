@@ -37,38 +37,38 @@
   <hr style="margin: 0 0 40px 0; border: none; border-top: 1px solid #e5e5e5;">
 
 
-  <!-- ==================================================
-       ブロック3：メモ（関連ノート一覧セクション）
+<!-- ==================================================
+       ブロック3：ノート（関連ノート一覧セクション）
        ================================================== -->
-<section class="section-notes">
+  <section class="section-notes">
     <div style="margin-bottom: 16px;">
       <h2 style="font-size: 1rem; font-weight: 600; color: #222; margin: 0 0 12px 0;">
-        メモ（<%= @word.notes.size %>件）
+        ノート（<%= @word.notes.size %>件）
       </h2>
-      <%= link_to "新しいメモを追加する", new_word_note_path(@word), class: "btn" %>
+      <%= link_to "新しいノートを追加する", new_word_note_path(@word), class: "btn" %>
     </div>
 
     <% if @word.notes.empty? %>
-      <!-- メモが0件の場合のEmpty State -->
+      <!-- ノートが0件の場合のEmpty State -->
       <div style="margin-top: 24px; color: #777; font-size: 0.95rem; line-height: 1.5;">
-        この言葉に関するメモはまだありません。日々の気づきやエピソードを追加してみましょう。
+        この言葉に関するノートはまだありません。日々の気づきや助けられたエピソードを記録してみましょう。
       </div>
     <% else %>
-      <!-- メモが1件以上ある場合の一覧 -->
-      <div class="memo-list" style="margin-top: 24px;">
+      <!-- ノートが1件以上ある場合の一覧 -->
+      <div class="note-list" style="margin-top: 24px;">
         <% @word.notes.order(created_at: :desc).each do |note| %>
-          <div class="memo-card">
-            <div class="memo-date">
+          <div class="note-card">
+            <div class="note-date">
               <%= note.created_at.strftime("%Y-%m-%d") %>
             </div>
 
-            <p class="memo-body"><%= simple_format(note.body) %></p>
+            <p class="note-body"><%= simple_format(note.body) %></p>
 
-            <div class="memo-actions flow">
+            <div class="note-actions flow">
               <%= link_to "編集", edit_word_note_path(@word, note), class: "btn" %>
               <%= link_to "削除", word_note_path(@word, note),
-                   data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-                   class: "btn-danger" %>
+                    data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                    class: "btn-danger" %>
             </div>
           </div>
         <% end %>
