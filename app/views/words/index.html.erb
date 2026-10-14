@@ -5,48 +5,57 @@
 
   <!-- 1. フォルダナビゲーション（サイドバー） -->
   <aside style="width: 220px; flex-shrink: 0; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 16px;">
-    <h3 style="font-size: 1rem; margin-top: 0; margin-bottom: 12px; border-bottom: 1px solid #dee2e6; padding-bottom: 6px;">フォルダ</h3>
     
-    <!-- フォルダ一覧 -->
-    <ul style="list-style: none; padding: 0; margin: 0 0 16px 0;">
-      <!-- すべての言葉 -->
-      <li style="margin-bottom: 8px;">
-        <%= link_to "📁 すべて", words_path(q: params[:q]), 
-            style: "text-decoration: none; font-weight: #{params[:folder_id].blank? ? 'bold' : 'normal'}; color: #{params[:folder_id].blank? ? '#0d6efd' : '#333'};" %>
-      </li>
-
-      <!-- 各フォルダ -->
-      <% @folders.each do |folder| %>
-        <li style="margin-bottom: 8px;">
-          <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id, q: params[:q]), 
-              style: "text-decoration: none; font-weight: #{params[:folder_id] == folder.id.to_s ? 'bold' : 'normal'}; color: #{params[:folder_id] == folder.id.to_s ? '#0d6efd' : '#333'};" %>
+    <!-- ▼ メニューセクション（全体機能） -->
+    <div style="margin-bottom: 20px;">
+      <h3 style="font-size: 1rem; margin-top: 0; margin-bottom: 10px; border-bottom: 1px solid #dee2e6; padding-bottom: 6px; color: #495057;">メニュー</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 4px;">
+          <%= link_to "📁 言葉一覧", words_path(q: params[:q]), 
+              style: "text-decoration: none; font-weight: #{params[:folder_id].blank? ? 'bold' : 'normal'}; color: #{params[:folder_id].blank? ? '#0d6efd' : '#333'}; display: block; padding: 4px 0;" %>
         </li>
-      <% end %>
-
-      <!-- 未分類 -->
-      <li style="margin-top: 12px; border-top: 1px dashed #dee2e6; padding-top: 8px;">
-        <%= link_to "📄 未分類", words_path(folder_id: "none", q: params[:q]), 
-            style: "text-decoration: none; font-weight: #{params[:folder_id] == 'none' ? 'bold' : 'normal'}; color: #{params[:folder_id] == 'none' ? '#0d6efd' : '#6c757d'};" %>
-      </li>
-    </ul>
-
-    <!-- 追加機能：サイドバー内からの新規フォルダ作成フォーム -->
-    <div style="border-top: 1px solid #dee2e6; padding-top: 12px; margin-bottom: 12px;">
-      <p style="font-size: 0.85rem; font-weight: bold; margin: 0 0 6px 0; color: #495057;">＋ フォルダを追加</p>
-      <%= form_with model: Folder.new, url: folders_path, local: true do |f| %>
-        <div style="display: flex; gap: 4px;">
-          <%= f.text_field :name, placeholder: "フォルダ名", 
-              style: "width: 100%; padding: 4px 6px; font-size: 0.85rem; border: 1px solid #ced4da; border-radius: 4px;" %>
-          <%= f.submit "追加", class: "link-action", 
-              style: "padding: 4px 8px; font-size: 0.8rem; cursor: pointer; white-space: nowrap;" %>
-        </div>
-      <% end %>
+      </ul>
     </div>
 
-    <!-- フォルダ詳細管理画面へのリンク -->
-    <div style="border-top: 1px solid #dee2e6; padding-top: 8px;">
-      <%= link_to "⚙️ 編集・削除はこちら", folders_path, class: "link-action", style: "font-size: 0.8rem;" %>
+    <!-- ▼ フォルダ一覧セクション -->
+    <div style="margin-bottom: 20px;">
+      <h3 style="font-size: 1rem; margin-top: 0; margin-bottom: 10px; border-bottom: 1px solid #dee2e6; padding-bottom: 6px; color: #495057;">フォルダ</h3>
+      
+      <!-- 各フォルダ -->
+      <ul style="list-style: none; padding: 0; margin: 0 0 12px 0;">
+        <% @folders.each do |folder| %>
+          <li style="margin-bottom: 8px;">
+            <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id, q: params[:q]), 
+                style: "text-decoration: none; font-weight: #{params[:folder_id] == folder.id.to_s ? 'bold' : 'normal'}; color: #{params[:folder_id] == folder.id.to_s ? '#0d6efd' : '#333'}; display: block; padding: 2px 0;" %>
+          </li>
+        <% end %>
+
+        <!-- 未分類 -->
+        <li style="margin-top: 8px; border-top: 1px dashed #dee2e6; padding-top: 8px;">
+          <%= link_to "📄 未分類", words_path(folder_id: "none", q: params[:q]), 
+              style: "text-decoration: none; font-weight: #{params[:folder_id] == 'none' ? 'bold' : 'normal'}; color: #{params[:folder_id] == 'none' ? '#0d6efd' : '#6c757d'}; display: block; padding: 2px 0;" %>
+        </li>
+      </ul>
+
+      <!-- 追加機能：サイドバー内からの新規フォルダ作成フォーム -->
+      <div style="border-top: 1px solid #dee2e6; padding-top: 12px; margin-bottom: 12px;">
+        <p style="font-size: 0.85rem; font-weight: bold; margin: 0 0 6px 0; color: #495057;">＋ フォルダを追加</p>
+        <%= form_with model: Folder.new, url: folders_path, local: true do |f| %>
+          <div style="display: flex; gap: 4px;">
+            <%= f.text_field :name, placeholder: "フォルダ名", 
+                style: "width: 100%; padding: 4px 6px; font-size: 0.85rem; border: 1px solid #ced4da; border-radius: 4px;" %>
+            <%= f.submit "追加", class: "link-action", 
+                style: "padding: 4px 8px; font-size: 0.8rem; cursor: pointer; white-space: nowrap;" %>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- フォルダ詳細管理画面へのリンク -->
+      <div>
+        <%= link_to "⚙️ 編集・削除はこちら", folders_path, class: "link-action", style: "font-size: 0.8rem;" %>
+      </div>
     </div>
+
   </aside>
 
   <!-- 2. メインコンテンツ領域（既存のコンテンツ） -->
