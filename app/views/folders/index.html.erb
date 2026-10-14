@@ -41,7 +41,7 @@
           <% @folders.each do |folder| %>
             <tr>
               <td class="folder-name-cell">
-                <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id), class: "folder-link" %>
+                <%= link_to "📂 #{folder.name}", words_path(folder_id: folder.id, from: 'management'), class: "folder-link" %>
               </td>
               <td><%= folder.words.count %> 件</td>
               <td>

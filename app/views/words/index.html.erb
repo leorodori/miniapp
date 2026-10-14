@@ -60,6 +60,12 @@
 
   <!-- 2. メインコンテンツ領域（既存のコンテンツ） -->
   <div class="board-container" style="flex-grow: 1;">
+    <!-- フォルダ管理から来た場合のみ表示する戻るリンク -->
+    <% if params[:from] == 'management' %>
+      <div style="margin-bottom: 12px;">
+        <%= link_to "← フォルダ管理に戻る", folders_path, class: "link-action", style: "font-size: 0.9rem; color: #6c757d;" %>
+      </div>
+    <% end %>
 
     <!-- 検索フォーム -->
     <div style="margin-bottom: 20px;">
