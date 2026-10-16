@@ -14,6 +14,10 @@
           <%= link_to "📁 言葉一覧", words_path(q: params[:q]), 
               style: "text-decoration: none; font-weight: #{params[:folder_id].blank? ? 'bold' : 'normal'}; color: #{params[:folder_id].blank? ? '#0d6efd' : '#333'}; display: block; padding: 4px 0;" %>
         </li>
+        <li style="margin-bottom: 4px;">
+          <%= link_to "🔑 パスワード変更", edit_password_path, 
+              style: "text-decoration: none; color: #333; display: block; padding: 4px 0;" %>
+        </li>
       </ul>
     </div>
 
