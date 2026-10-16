@@ -17,6 +17,10 @@
     </div>
   <% end %>
 
+  <div class="forgot-password-link" style="margin-top: 15px;">
+    <%= link_to "パスワードをお忘れですか？", new_password_reset_path %>
+  </div>
+
   <% if flash[:alert] %>
     <p class="login-error"><%= flash[:alert] %></p>
   <% end %>
