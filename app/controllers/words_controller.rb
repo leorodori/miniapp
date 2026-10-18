@@ -2,6 +2,7 @@ class WordsController < ApplicationController
   before_action :require_login
   before_action :set_word, only: [:show, :edit, :update, :destroy, :pin, :unpin]
   before_action :require_own_word, only: [:edit, :update, :destroy, :pin, :unpin]
+  before_action :check_guest, only: [:create, :update, :destroy, :pin, :unpin]
 
   def index
     @words = current_user.words
@@ -72,6 +73,12 @@ class WordsController < ApplicationController
   end
 
   private
+
+  def check_guest
+    if current_user&.guest?
+      redirect_to words_path, alert: "サンプル閲覧モードではこの操作はできません。"
+    end
+  end
 
   def set_word
     @word = current_user.words.find_by(id: params[:id])
