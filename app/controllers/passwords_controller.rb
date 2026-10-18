@@ -1,5 +1,6 @@
 class PasswordsController < ApplicationController
   before_action :require_login
+  before_action :check_guest, only: [:update]
 
   def edit
     @user = current_user

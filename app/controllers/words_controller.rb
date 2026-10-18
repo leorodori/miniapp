@@ -2,6 +2,7 @@ class WordsController < ApplicationController
   before_action :require_login
   before_action :set_word, only: [:show, :edit, :update, :destroy, :pin, :unpin]
   before_action :require_own_word, only: [:edit, :update, :destroy, :pin, :unpin]
+  before_action :check_guest, only: [:create, :update, :destroy, :pin, :unpin]
 
   def index
     @words = current_user.words

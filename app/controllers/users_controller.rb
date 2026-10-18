@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :redirect_if_logged_in, only: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -16,5 +18,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def redirect_if_logged_in
+    if logged_in?
+      redirect_to words_path, alert: "すでにログインしています。"
+    end
   end
 end

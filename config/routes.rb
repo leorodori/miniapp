@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'password_resets/create'
   get 'password_resets/edit'
   get 'password_resets/update'
+  post 'guest_login', to: 'sessions#guest_create', as: 'guest_login'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

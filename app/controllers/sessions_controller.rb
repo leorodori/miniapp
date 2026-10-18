@@ -18,4 +18,14 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to login_path, notice: "ログアウトしました"
   end
+
+  def guest_create
+    user = User.find_by(email: "sample@example.com")
+    if user
+      session[:user_id] = user.id
+      redirect_to words_path, notice: "サンプル閲覧モードでログインしました。"
+    else
+      redirect_to login_path, alert: "サンプルユーザーが見つかりません。シードデータを投入してください。"
+    end
+  end
 end
