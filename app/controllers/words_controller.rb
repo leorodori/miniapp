@@ -74,12 +74,6 @@ class WordsController < ApplicationController
 
   private
 
-  def check_guest
-    if current_user&.guest?
-      redirect_to words_path, alert: "サンプル閲覧モードではこの操作はできません。"
-    end
-  end
-
   def set_word
     @word = current_user.words.find_by(id: params[:id])
     unless @word

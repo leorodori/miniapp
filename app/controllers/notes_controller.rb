@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :set_word
   before_action :set_note, only: [:edit, :update, :destroy]
+  before_action :check_guest, only: [:create, :update, :destroy]
 
   def new
     @note = @word.notes.build

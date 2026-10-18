@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, alert: "ログインしてください"
     end
   end
+
+  private
+
+  def check_guest
+    if current_user&.guest?
+      redirect_back fallback_location: words_path, alert: "サンプル閲覧モードではこの操作はできません。"
+    end
+  end
 end

@@ -1,6 +1,7 @@
 class FoldersController < ApplicationController
   before_action :require_login
   before_action :set_folder, only: [:edit, :update, :destroy]
+  before_action :check_guest, only: [:create, :update, :destroy]
 
   def index
     @folders = current_user.folders.order(created_at: :desc)
