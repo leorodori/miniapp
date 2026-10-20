@@ -1,18 +1,22 @@
-<h1>パスワードをお忘れですか？</h1>
+<div class="form-container">
+  <h1>パスワードをお忘れですか？</h1>
 
-<p>登録したメールアドレスを入力してください。パスワード再設定用のリンクをお送りします。</p>
+  <div class="form-card">
+    <p class="form-description" style="margin-bottom: 20px;">登録したメールアドレスを入力してください。パスワード再設定用のリンクをお送りします。</p>
 
-<%= form_with(scope: :password_reset, url: password_resets_path, local: true) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br>
-    <%= f.email_field :email, autofocus: true, required: true %>
+    <%= form_with(scope: :password_reset, url: password_resets_path, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, required: true, class: "form-control" %>
+      </div>
+
+      <div class="form-actions" style="margin-bottom: 20px;">
+        <%= f.submit "再設定用メールを送信する", class: "link-action" %>
+      </div>
+    <% end %>
+
+    <div class="form-footer" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+      <%= link_to "ログイン画面に戻る", root_path, class: "link-action" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "再設定用メールを送信する" %>
-  </div >
-<% end %>
-
-<p>
-  <%= link_to "ログイン画面に戻る", root_path %>
-</p>
+</div>
