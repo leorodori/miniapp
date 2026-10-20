@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_10_16_022753) do
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.text "description"
     t.boolean "pinned", default: false, null: false
     t.bigint "folder_id"
