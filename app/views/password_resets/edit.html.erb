@@ -1,28 +1,29 @@
-<h1>新しいパスワードの設定</h1>
+<div class="form-container">
+  <h1>新しいパスワードの設定</h1>
 
-<%= form_with(model: @user, url: password_reset_path(params[:id]), local: true) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "件のエラー") %> が発生しました：</h2>
-      <ul>
+  <div class="form-card">
+    <% if @user.errors.any? %>
+      <div class="error-messages">
         <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <p class="error"><%= message %></p>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password, "新しいパスワード" %><br>
-    <%= f.password_field :password, required: true %>
-  </div>
+    <%= form_with(model: @user, url: password_reset_path(params[:id]), local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :password, "新しいパスワード" %>
+        <%= f.password_field :password, required: true, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "新しいパスワード（確認用）" %><br>
-    <%= f.password_field :password_confirmation, required: true %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "新しいパスワード（確認用）" %>
+        <%= f.password_field :password_confirmation, required: true, class: "form-control" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "パスワードを更新する" %>
+      <div class="form-actions">
+        <%= f.submit "パスワードを更新する", class: "link-action" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

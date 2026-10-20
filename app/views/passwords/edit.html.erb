@@ -1,39 +1,35 @@
-<h1>パスワードの変更</h1>
+<div class="form-container">
+  <h1>パスワードの変更</h1>
 
-<div class="login-container">
-  <%= form_with(model: @user, url: password_path, method: :patch, local: true) do |f| %>
+  <div class="form-card">
     <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "件のエラー") %> が発生しました：</h2>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+      <div class="error-messages">
+        <% @user.errors.full_messages.each do |message| %>
+          <p class="error"><%= message %></p>
+        <% end %>
       </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :current_password, "現在のパスワード" %><br>
-      <%= f.password_field :current_password, required: true, class: "login-input" %>
-    </div>
+    <%= form_with(model: @user, url: password_path, method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :current_password, "現在のパスワード" %>
+        <%= f.password_field :current_password, required: true, class: "form-control" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :password, "新しいパスワード" %><br>
-      <%= f.password_field :password, required: true, class: "login-input" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :password, "新しいパスワード" %>
+        <%= f.password_field :password, required: true, class: "form-control" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation, "新しいパスワード（確認用）" %><br>
-      <%= f.password_field :password_confirmation, required: true, class: "login-input" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "新しいパスワード（確認用）" %>
+        <%= f.password_field :password_confirmation, required: true, class: "form-control" %>
+      </div>
 
-    <div class="actions">
-      <%= f.submit "パスワードを変更する" %>
-    </div>
-  <% end %>
-
-  <div style="margin-top: 15px;">
-    <%= link_to "言葉一覧へ戻る", words_path %>
+      <div class="form-actions">
+        <%= f.submit "パスワードを変更する", class: "link-action" %>
+        <%= link_to "言葉一覧へ戻る", words_path, class: "link-action" %>
+      </div>
+    <% end %>
   </div>
 </div>
