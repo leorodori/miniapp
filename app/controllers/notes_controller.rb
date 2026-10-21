@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :require_login
   before_action :set_word
   before_action :set_note, only: [:edit, :update, :destroy]
   before_action :check_guest, only: [:create, :update, :destroy]
