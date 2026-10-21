@@ -11,13 +11,37 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード（確認用）"
         current_password: "現在のパスワード"
+      # ここで属性名をあえて空（""）にするのではなく、
+      # モデルごとの attributes でエラーメッセージを直接指定します
       word:
-        name: ""
-        body: ""
+        name: "言葉"
+        body: "どんな言葉？"
       folder:
-        name: ""
+        name: "フォルダ名"
+      note:
+        body: "ノート"
     errors:
+      messages:
+        blank: "を入力してください"
+        taken: "はすでに存在します"
+        invalid: "は不正な値です"
+        confirmation: "が入力値と一致しません"
+      # 💡 モデルごとの属性エラーをここで個別に上書きして、重複を防ぎつつ綺麗にする
       models:
+        word:
+          attributes:
+            name:
+              blank: "を入力してください"
+            body:
+              blank: "を入力してください"
+        folder:
+          attributes:
+            name:
+              blank: "を入力してください"
+        note:
+          attributes:
+            body:
+              blank: "を入力してください"
         user:
           attributes:
             current_password:
