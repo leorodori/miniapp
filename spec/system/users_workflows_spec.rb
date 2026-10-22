@@ -90,4 +90,53 @@ RSpec.describe "UsersWorkflow", type: :system do
       expect(page).not_to have_content("継続は最大の力なり")
     end
   end
+
+  # 4. 検索とフォルダ絞り込みの検証
+  describe "言葉の検索とフォルダ絞り込み", js: true do
+    it "キーワード検索とサイドバーのフォルダによる絞り込みができること" do
+      visit login_path
+      fill_in "メールアドレス", with: "test@example.com"
+      fill_in "パスワード", with: "password123"
+      click_button "ログイン"
+
+      # 事前準備：2つのフォルダを作成
+      visit folders_path
+      fill_in "フォルダ名", with: "アニメ"
+      click_button "作成する"
+
+      visit folders_path
+      fill_in "フォルダ名", with: "名言"
+      click_button "作成する"
+
+      # 事前準備：異なるフォルダに、それぞれの世界観に沿った言葉を登録する
+      visit words_path
+      click_link "新しい言葉を追加する"
+      select "アニメ", from: "フォルダ"
+      fill_in "言葉", with: "心臓を捧げよ"
+      fill_in "どんな言葉？", with: "『進撃の巨人』調査兵団の敬礼の言葉"
+      click_button "登録する"
+
+      visit words_path
+      click_link "新しい言葉を追加する"
+      select "名言", from: "フォルダ"
+      fill_in "言葉", with: "為せば成る、為せねば成らぬ何事も"
+      fill_in "どんな言葉？", with: "上杉鷹山の言葉"
+      click_button "登録する"
+
+      # ── 1. キーワード検索のテスト ──
+      visit words_path
+      fill_in "検索ワードを入力", with: "心臓"
+      click_button "検索"
+
+      expect(page).to have_content("心臓を捧げよ")
+      expect(page).not_to have_content("為せば成る、為せねば成らぬ何事も")
+
+      # ── 2. フォルダ絞り込みのテスト ──
+      visit words_path
+      click_link "名言"
+
+      expect(page).to have_content("為せば成る、為せねば成らぬ何事も")
+      expect(page).not_to have_content("心臓を捧げよ")
+    end
+  end
 end
