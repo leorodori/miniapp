@@ -34,10 +34,9 @@
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 
-  /* 自動伸縮のための設定 */
-  min-height: 160px;   /* 最低限の高さだけ確保 */
-  width: 300px;        /* 横幅は固定（世界観の統一） */
-  height: auto;        /* 内容に応じて伸びる */
+  min-height: 160px;
+  width: 300px;
+  height: auto;
 }
 
 /* ノート本文 */
@@ -48,8 +47,8 @@
 
 /* 編集・削除ボタンの位置 */
 .note-actions {
-  margin-top: 12px; /* 自然な余白に変更 */
-  position: static; /* absolute を廃止 */
+  margin-top: 12px;
+  position: static;
 }
 
 /* ノート追加リンク */
