@@ -49,4 +49,45 @@ RSpec.describe "UsersWorkflow", type: :system do
       expect(page).to have_content("入力してください")
     end
   end
+
+  # 3. 編集・削除（CRUDのライフサイクル検証）
+  describe "言葉の編集と削除", js: true do
+    it "登録した言葉を編集および削除できること" do
+      visit login_path
+      fill_in "メールアドレス", with: "test@example.com"
+      fill_in "パスワード", with: "password123"
+      click_button "ログイン"
+
+      # 事前準備：フォルダとデータの作成
+      visit folders_path
+      fill_in "フォルダ名", with: "ライフハック"
+      click_button "作成する"
+
+      visit words_path
+      click_link "新しい言葉を追加する"
+      select "ライフハック", from: "フォルダ"
+      fill_in "言葉", with: "継続は力なり"
+      fill_in "どんな言葉？", with: "ことわざ"
+      click_button "登録する"
+
+      # ── 編集（Update）のテスト ──
+      click_link "詳細"
+      click_link "編集"
+      
+      fill_in "言葉", with: "継続は最大の力なり"
+      click_button "更新する"
+
+      # 更新後の内容が反映されていることの確認
+      expect(page).to have_content("継続は最大の力なり")
+
+      # ── 削除（Delete）のテスト ──
+      accept_confirm("本当に削除しますか？") do
+        click_link "削除"
+      end
+
+      # 削除処理（Turboの非同期通信およびリダイレクト）が完了して一覧画面になるまで待つ
+      expect(page).to have_current_path(words_path, ignore_query: true)
+      expect(page).not_to have_content("継続は最大の力なり")
+    end
+  end
 end

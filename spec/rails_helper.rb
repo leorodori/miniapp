@@ -70,4 +70,31 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
+  # Capybaraが起動するテスト用サーバーのホスト設定（ポートは自動割り当てにする）
+  Capybara.server_host = '0.0.0.0'
+  
+  # Chrome（別コンテナ）からRailsアプリへアクセスする際のホスト名と動的ポートを指定
+  # Dockerのコンテナ間通信では、ホスト名に 'web' を使用できます
+  Capybara.app_host = "http://web:#{Capybara.server_port}" rescue nil
+
+  # JavaScriptを使用するテスト（js: true）の場合の設定
+  Capybara.register_driver :remote_chrome do |app|
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--window-size=1400,1400')
+
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :remote,
+      url: ENV.fetch("SELENIUM_DRIVER_URL", "http://chrome:4444"),
+      options: options
+    )
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :remote_chrome
+  end
 end
