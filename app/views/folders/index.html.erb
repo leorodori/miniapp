@@ -2,7 +2,6 @@
 
 <div class="folder-layout">
 
-  <!-- 1. 新規フォルダ作成フォーム -->
   <div class="folder-form-card">
     <h2 class="folder-section-title">新しいフォルダを作成</h2>
 
@@ -24,7 +23,6 @@
     <% end %>
   </div>
 
-  <!-- 2. 既存フォルダ一覧 & 操作（編集・削除） -->
   <div class="folder-list-container">
     <h2 class="folder-section-title">登録済みフォルダ一覧</h2>
 
@@ -47,8 +45,8 @@
               <td>
                 <%= link_to "フォルダ名を変更", edit_folder_path(folder), class: "link-action" %>
                 <%= link_to "削除", folder_path(folder),
-                      data: { turbo_method: "delete", turbo_confirm: "フォルダ「#{folder.name}」を削除しますか？\n\n※中の単語は削除されず『未分類』に移動します。" },
-                      class: "link-action link-action-danger" %>
+                    data: { turbo_method: "delete", turbo_confirm: "フォルダ「#{folder.name}」を削除しますか？\n\n※中の単語は削除されず『未分類』に移動します。" },
+                    class: "link-action link-action-danger" %>
               </td>
             </tr>
           <% end %>
