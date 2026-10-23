@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "UsersWorkflow", type: :system do
   let!(:user) { create(:user, email: "test@example.com", password: "password123") }
 
-  # 1. 正常系（ログイン〜フォルダ作成〜言葉追加〜詳細確認）
   it "ログインしてフォルダを作成し、言葉を追加・詳細確認できること" do
     visit login_path
     fill_in "メールアドレス", with: "test@example.com"
@@ -30,7 +29,6 @@ RSpec.describe "UsersWorkflow", type: :system do
     expect(page).to have_content("スティーブ・ジョブズ")
   end
 
-  # 2. 異常系（バリデーションエラーの検証）
   describe "異常系の操作" do
     it "言葉の必須項目が空の場合、登録に失敗してエラーメッセージが表示されること" do
       visit login_path
@@ -41,16 +39,12 @@ RSpec.describe "UsersWorkflow", type: :system do
       expect(current_path).to eq(words_path)
 
       click_link "新しい言葉を追加する"
-
-      # 何も入力せずに「登録する」ボタンを押す
       click_button "登録する"
 
-      # バリデーションエラーメッセージが表示されていることを確認
       expect(page).to have_content("入力してください")
     end
   end
 
-  # 3. 編集・削除（CRUDのライフサイクル検証）
   describe "言葉の編集と削除", js: true do
     it "登録した言葉を編集および削除できること" do
       visit login_path
@@ -58,7 +52,6 @@ RSpec.describe "UsersWorkflow", type: :system do
       fill_in "パスワード", with: "password123"
       click_button "ログイン"
 
-      # 事前準備：フォルダとデータの作成
       visit folders_path
       fill_in "フォルダ名", with: "ライフハック"
       click_button "作成する"
@@ -70,28 +63,23 @@ RSpec.describe "UsersWorkflow", type: :system do
       fill_in "どんな言葉？", with: "ことわざ"
       click_button "登録する"
 
-      # ── 編集（Update）のテスト ──
       click_link "詳細"
       click_link "編集"
       
       fill_in "言葉", with: "継続は最大の力なり"
       click_button "更新する"
 
-      # 更新後の内容が反映されていることの確認
       expect(page).to have_content("継続は最大の力なり")
 
-      # ── 削除（Delete）のテスト ──
       accept_confirm("本当に削除しますか？") do
         click_link "削除"
       end
 
-      # 削除処理（Turboの非同期通信およびリダイレクト）が完了して一覧画面になるまで待つ
       expect(page).to have_current_path(words_path, ignore_query: true)
       expect(page).not_to have_content("継続は最大の力なり")
     end
   end
 
-  # 4. 検索とフォルダ絞り込みの検証
   describe "言葉の検索とフォルダ絞り込み", js: true do
     it "キーワード検索とサイドバーのフォルダによる絞り込みができること" do
       visit login_path
@@ -99,7 +87,6 @@ RSpec.describe "UsersWorkflow", type: :system do
       fill_in "パスワード", with: "password123"
       click_button "ログイン"
 
-      # 事前準備：2つのフォルダを作成
       visit folders_path
       fill_in "フォルダ名", with: "アニメ"
       click_button "作成する"
@@ -108,7 +95,6 @@ RSpec.describe "UsersWorkflow", type: :system do
       fill_in "フォルダ名", with: "名言"
       click_button "作成する"
 
-      # 事前準備：異なるフォルダに、それぞれの世界観に沿った言葉を登録する
       visit words_path
       click_link "新しい言葉を追加する"
       select "アニメ", from: "フォルダ"
@@ -123,7 +109,6 @@ RSpec.describe "UsersWorkflow", type: :system do
       fill_in "どんな言葉？", with: "上杉鷹山の言葉"
       click_button "登録する"
 
-      # ── 1. キーワード検索のテスト ──
       visit words_path
       fill_in "検索ワードを入力", with: "心臓"
       click_button "検索"
@@ -131,7 +116,6 @@ RSpec.describe "UsersWorkflow", type: :system do
       expect(page).to have_content("心臓を捧げよ")
       expect(page).not_to have_content("為せば成る、為せねば成らぬ何事も")
 
-      # ── 2. フォルダ絞り込みのテスト ──
       visit words_path
       click_link "名言"
 
