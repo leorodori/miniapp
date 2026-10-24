@@ -12,19 +12,16 @@
 
     <%= form_with model: @word, local: true do |f| %>
 
-      <!-- フォルダ選択（folder_id） -->
       <div class="form-group">
         <%= f.label :folder_id, "フォルダ" %>
         <%= f.collection_select :folder_id, @folders, :id, :name, { include_blank: "指定なし（未分類）" }, { class: "form-control" } %>
       </div>
 
-      <!-- 言葉（name） -->
       <div class="form-group">
         <%= f.label :name, "言葉" %>
         <%= f.text_field :name, class: "form-control" %>
       </div>
 
-      <!-- どんな言葉？（description） -->
       <div class="form-group">
         <%= f.label :description, "どんな言葉？" %>
         <%= f.text_area :description, class: "word-textarea", style: "height: 120px;" %>

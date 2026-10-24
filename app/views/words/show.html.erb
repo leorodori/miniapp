@@ -1,20 +1,12 @@
 <div class="board-container">
 
-  <!-- ==================================================
-       ブロック1：言葉（主役セクション）
-       ================================================== -->
   <section class="section-primary" style="margin-bottom: 40px;">
     <h1 style="font-size: 1.8rem; font-weight: 700; line-height: 1.4; margin: 0; color: #111;">
       <%= @word.name %>
     </h1>
   </section>
 
-
-  <!-- ==================================================
-       ブロック2：どんな言葉？（詳細・説明セクション）
-       ================================================== -->
   <section class="section-description" style="margin-bottom: 40px;">
-    <!-- 左バーでブロックの開始を明示（レフトバーパターン） -->
     <div style="padding-left: 16px; border-left: 3px solid #333;">
       <h2 style="font-size: 0.875rem; font-weight: 600; color: #666; margin: 0 0 8px 0; letter-spacing: 0.04em;">
         どんな言葉？
@@ -24,7 +16,6 @@
       </div>
     </div>
 
-    <!-- アクションボタン -->
     <div class="word-actions" style="margin-top: 16px; padding-left: 19px;">
       <%= link_to "編集", edit_word_path(@word), class: "btn", style: "margin-right: 8px;" %>
       <%= link_to "削除", word_path(@word),
@@ -33,13 +24,8 @@
     </div>
   </section>
 
-  <!-- フェーズの境界線（セクション間の区切り） -->
   <hr style="margin: 0 0 40px 0; border: none; border-top: 1px solid #e5e5e5;">
 
-
-<!-- ==================================================
-       ブロック3：ノート（関連ノート一覧セクション）
-       ================================================== -->
   <section class="section-notes">
     <div style="margin-bottom: 16px;">
       <h2 style="font-size: 1rem; font-weight: 600; color: #222; margin: 0 0 12px 0;">
@@ -49,12 +35,10 @@
     </div>
 
     <% if @word.notes.empty? %>
-      <!-- ノートが0件の場合のEmpty State -->
       <div style="margin-top: 24px; color: #777; font-size: 0.95rem; line-height: 1.5;">
         この言葉に関するノートはまだありません。日々の気づきや助けられたエピソードを記録してみましょう。
       </div>
     <% else %>
-      <!-- ノートが1件以上ある場合の一覧 -->
       <div class="note-list" style="margin-top: 24px;">
         <% @word.notes.order(created_at: :desc).each do |note| %>
           <div class="note-card">

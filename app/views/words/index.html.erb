@@ -1,12 +1,9 @@
 <h1>あなたの言葉一覧</h1>
 
-<!-- サイドバー＋メインコンテンツを並べるレイアウト -->
 <div style="display: flex; gap: 24px; align-items: flex-start;">
 
-  <!-- 1. フォルダナビゲーション（サイドバー） -->
   <aside style="width: 220px; flex-shrink: 0; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 16px;">
     
-    <!-- ▼ メニューセクション（全体機能） -->
     <div style="margin-bottom: 20px;">
       <h3 style="font-size: 1rem; margin-top: 0; margin-bottom: 10px; border-bottom: 1px solid #dee2e6; padding-bottom: 6px; color: #495057;">メニュー</h3>
       <ul style="list-style: none; padding: 0; margin: 0;">
@@ -21,11 +18,9 @@
       </ul>
     </div>
 
-    <!-- ▼ フォルダ一覧セクション -->
     <div style="margin-bottom: 20px;">
       <h3 style="font-size: 1rem; margin-top: 0; margin-bottom: 10px; border-bottom: 1px solid #dee2e6; padding-bottom: 6px; color: #495057;">フォルダ</h3>
       
-      <!-- 各フォルダ -->
       <ul style="list-style: none; padding: 0; margin: 0 0 12px 0;">
         <% @folders.each do |folder| %>
           <li style="margin-bottom: 8px;">
@@ -34,14 +29,12 @@
           </li>
         <% end %>
 
-        <!-- 未分類 -->
         <li style="margin-top: 8px; border-top: 1px dashed #dee2e6; padding-top: 8px;">
           <%= link_to "📄 未分類", words_path(folder_id: "none", q: params[:q]), 
               style: "text-decoration: none; font-weight: #{params[:folder_id] == 'none' ? 'bold' : 'normal'}; color: #{params[:folder_id] == 'none' ? '#0d6efd' : '#6c757d'}; display: block; padding: 2px 0;" %>
         </li>
       </ul>
 
-      <!-- 追加機能：サイドバー内からの新規フォルダ作成フォーム -->
       <div style="border-top: 1px solid #dee2e6; padding-top: 12px; margin-bottom: 12px;">
         <p style="font-size: 0.85rem; font-weight: bold; margin: 0 0 6px 0; color: #495057;">＋ フォルダを追加</p>
         <%= form_with model: Folder.new, url: folders_path, local: true do |f| %>
@@ -54,7 +47,6 @@
         <% end %>
       </div>
 
-      <!-- フォルダ詳細管理画面へのリンク -->
       <div>
         <%= link_to "⚙️ 編集・削除はこちら", folders_path, class: "link-action", style: "font-size: 0.8rem;" %>
       </div>
@@ -62,16 +54,13 @@
 
   </aside>
 
-  <!-- 2. メインコンテンツ領域（既存のコンテンツ） -->
   <div class="board-container" style="flex-grow: 1;">
-    <!-- フォルダ管理から来た場合のみ表示する戻るリンク -->
     <% if params[:from] == 'management' %>
       <div style="margin-bottom: 12px;">
         <%= link_to "← フォルダ管理に戻る", folders_path, class: "link-action", style: "font-size: 0.9rem; color: #6c757d;" %>
       </div>
     <% end %>
 
-    <!-- 検索フォーム -->
     <div style="margin-bottom: 20px;">
       <%= form_with url: words_path, method: :get, local: true do |f| %>
         <% if params[:folder_id].present? %>
@@ -95,12 +84,10 @@
     </div>
 
     <% if @words.present? %>
-      <!-- カード一覧（データが存在する場合） -->
       <div class="word-list">
         <% @words.each do |word| %>
           <div class="word-card">
 
-            <!-- Word の名前 -->
             <div class="word-name">
               <% if word.pinned? %>
                 📌
@@ -108,11 +95,9 @@
               <%= word.name %>
             </div>
 
-            <!-- メタ情報 -->
             <p class="word-meta">作成日: <%= word.created_at.strftime("%Y-%m-%d") %></p>
             <p class="word-meta">ノート数: <%= word.notes.size %></p>
             
-            <!-- 所属フォルダ名バッジ -->
             <p class="word-meta">
               フォルダ: 
               <% if word.folder %>
@@ -122,7 +107,6 @@
               <% end %>
             </p>
 
-            <!-- 操作リンク -->
             <div class="word-actions flow" style="margin-top: 12px;">
               <%= link_to "詳細", word_path(word), class: "link-action" %>
 
@@ -145,7 +129,6 @@
         <% end %>
       </div>
     <% else %>
-      <!-- Empty State（データが0件の場合） -->
       <div style="margin-top: 24px; padding: 32px; text-align: center; background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px;">
         <% if params[:q].present? %>
           <p style="margin-bottom: 12px; color: #555; font-size: 0.95rem;">
