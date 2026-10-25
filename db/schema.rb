@@ -1,46 +1,207 @@
-ActiveRecord::Schema[7.1].define(version: 2026_10_16_022753) do
-  enable_extension "plpgsql"
+# 言葉ライブラリ
 
-  create_table "folders", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_folders_on_user_id"
-  end
+## 目次
+1. [サービス概要](#1-サービス概要)
+2. [画面イメージ](#2-画面イメージ)
+3. [主な機能](#3-主な機能)
+4. [画面遷移図](#4-画面遷移図)
+5. [技術スタック](#5-技術スタック)
+6. [設計・実装上の工夫](#6-設計実装上の工夫)
+7. [テスト](#7-テスト)
+8. [開発背景](#8-開発背景)
+9. [今後の展望](#9-今後の展望)
 
-  create_table "notes", force: :cascade do |t|
-    t.text "body"
-    t.bigint "word_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["word_id"], name: "index_notes_on_word_id"
-  end
+---
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
+## 1. サービス概要
+日常の中で出会った「心に響いた言葉」を、その言葉に出会った背景や感情とともに記録し、必要な瞬間にいつでも振り返るためのプライベートライブラリアプリです。
+単なる言葉の保存ではなく、自分だけの体験や文脈も残すことで、後から言葉の価値を再体験できることを目指しています。
 
-  create_table "words", force: :cascade do |t|
-    t.text "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.text "description"
-    t.boolean "pinned", default: false, null: false
-    t.bigint "folder_id"
-    t.index ["folder_id"], name: "index_words_on_folder_id"
-    t.index ["user_id"], name: "index_words_on_user_id"
-  end
+---
+## 2. 画面イメージ
+### ログイン画面
+ログイン・ユーザー登録・パスワード再設定に加え、会員登録前でもアプリを体験できるサンプル閲覧モードを用意しています。
 
-  add_foreign_key "folders", "users"
-  add_foreign_key "notes", "words"
-  add_foreign_key "words", "folders"
-  add_foreign_key "words", "users"
-end
+### 言葉一覧画面
+登録した言葉をカード形式で一覧表示します。
+- キーワード検索
+- フォルダ絞り込み
+- ピン留め
+- ノート数表示
+に対応しています。
+
+### 言葉詳細画面
+言葉だけでなく、その言葉に出会った背景や感情をノートとして記録できます。
+単なる名言集ではなく、自分だけの体験と結びつけたライブラリとして管理できます。
+
+### フォルダ管理画面
+ユーザーの好みに合わせてフォルダ名の変更、削除、整理ができます。
+各フォルダに登録されている言葉数も確認できます。
+
+---
+## 3. 主な機能
+### 認証・アカウント管理
+- ユーザー登録
+- ログイン
+- ログアウト
+- パスワード変更
+- パスワード再設定
+#### パスワード再設定
+- 再設定メール送信
+- ランダムトークン発行
+- 2時間の有効期限管理
+- トークン無効化
+を実装しています。
+### 言葉管理
+- 登録
+- 一覧表示
+- 詳細表示
+- 編集
+- 削除
+### ノート管理
+言葉に紐づく
+- 背景
+- 感情
+- 学び
+- エピソード
+を記録できます。
+### フォルダ管理
+- 作成
+- 編集
+- 削除
+- 分類
+### 検索機能
+- キーワード検索
+- フォルダ絞り込み
+を組み合わせて検索できます。
+### ピン留め機能
+重要な言葉を一覧上部へ固定表示できます。
+### サンプル閲覧モード
+会員登録前でもアプリを体験できるよう、サンプルユーザーによる閲覧モードを実装しています。
+サンプルユーザーは
+- 言葉
+- ノート
+- フォルダ
+の作成・編集・削除を行えないよう制御しています。
+
+---
+## 4. 画面遷移図
+```mermaid
+flowchart TD
+    Login[ログイン画面]
+    Login --> Signup[ユーザー登録]
+    Login --> ResetRequest[パスワード再設定申請]
+    Login --> WordsIndex[言葉一覧]
+    Login --> Guest[サンプル閲覧モード]
+    Guest --> WordsIndex
+    ResetRequest --> ResetPassword[パスワード再設定]
+    WordsIndex --> WordNew[言葉登録]
+    WordsIndex --> WordShow[言葉詳細]
+    WordsIndex --> FolderIndex[フォルダ管理]
+    WordsIndex --> PasswordEdit[パスワード変更]
+    WordShow --> WordEdit[言葉編集]
+    WordShow --> NoteNew[ノート作成]
+    WordShow --> NoteEdit[ノート編集]
+    FolderIndex --> FolderCreate[フォルダ作成]
+    FolderIndex --> FolderEdit[フォルダ編集]
+    WordNew --> WordsIndex
+    WordEdit --> WordShow
+    NoteNew --> WordShow
+    NoteEdit --> WordShow
+    PasswordEdit --> WordsIndex
+```
+---
+## 5. 技術スタック
+| 分類 | 技術 |
+|--------|--------|
+| Language | Ruby 3.2.3 |
+| Framework | Ruby on Rails 7.1 |
+| Database | PostgreSQL |
+| Frontend | HTML / CSS |
+| JavaScript | Hotwire / Importmap |
+| Authentication | has_secure_password / BCrypt |
+| Mail | Action Mailer |
+| Test | RSpec |
+| Container | Docker / Docker Compose |
+
+---
+## 6. 設計・実装上の工夫
+### 言葉と文脈を分離したデータ設計
+心に残った言葉は、その言葉単体ではなく「どのような状況で出会ったか」という背景とセットで記録することで価値を持つと考えました。
+そのため Word と Note を分離し、言葉と文脈を別々に管理できる構成を採用しています。
+### フォルダ未分類を許容する設計
+まず記録することを優先できるよう、フォルダ選択を必須にしていません。
+後から整理できることで、登録のハードルを下げています。
+### フォルダ削除時のデータ保護
+フォルダ削除時に言葉まで消えないよう、言葉は未分類状態として保持する設計を採用しています。
+### 認可制御
+ログインユーザーに紐づくデータのみ取得し、他ユーザーのデータへアクセスできないようにしています。
+また、URLの直接入力による不正アクセスも防止しています。
+### サンプル閲覧モード
+会員登録前でもアプリを体験できるようにしつつ、サンプルデータが変更されないよう操作制限を実装しています。
+
+---
+## 7. テスト
+RSpecを利用してテストを実装しています。
+### Model Spec
+- User
+- Word
+- Folder
+- Note
+### Request Spec
+- Sessions
+- Words
+- Notes
+- Folders
+### System Spec
+- ユーザー主要ワークフロー
+### 実行方法
+```bash
+docker compose exec -e RAILS_ENV=test web bundle exec rspec
+```
+---
+## 8. 開発背景
+### このアイデアはどこから生まれたか
+本、Web記事、映画、音楽、テレビ番組など、日常のさまざまな場面で心に残る言葉に出会うことがあります。
+記録媒体が散在していたり、記録自体が漏れていたりすることで、「あの言葉はどこに保存したか」を見失ってしまう課題があった。
+### 課題
+- 出典が散らばっている
+- 記録しても埋もれてしまう
+- 必要な時に見つけられない
+という問題がありました。
+特に、自分を支えてくれるはずの言葉を必要な瞬間に活用できないことに課題感を持っていました。
+### 想定ユーザー
+- 学習や仕事に日々挑戦している人
+- 読書や映画などから得た言葉を大切にしたい人
+- 自分を励ましてくれる言葉を蓄積したい人
+を想定しています。
+なお、本サービスは自分自身が抱えていた課題を出発点として設計しています。
+### 既存サービスとの違い
+#### 汎用メモアプリ
+自由度が高い反面、
+- 言葉
+- 出典
+- 文脈
+を管理するための構造を自分で設計する必要があります。
+#### 名言集アプリ
+一般的な名言が中心であり、自分の体験や感情とは結びついていません。
+### 差別化ポイント
+本サービスでは、
+- 言葉
+- 出典
+- 背景
+- 感情
+を構造化して保存することで、自分だけの文脈付きライブラリを作れることを重視しています。
+### 提供したい価値
+出会った言葉を、自分だけの文脈とともに蓄積し、必要な瞬間に振り返り活用できることを目指しています。
+
+---
+## 9. 今後の展望
+### タグ機能
+フォルダとは異なる切り口で言葉を整理できる機能。
+### 今日の言葉機能
+過去の言葉との偶然の再会を生み出す機能。
+### 通知機能
+登録した言葉を定期的に振り返るためのリマインド機能。
+### 傾向分析機能
+蓄積されたデータから、自分がどのような言葉に励まされやすいかを可視化する機能。
